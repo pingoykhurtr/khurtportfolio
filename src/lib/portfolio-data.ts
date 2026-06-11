@@ -48,6 +48,13 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+import project1 from "@/assets/project-1.png.asset.json";
+import project2 from "@/assets/project-2.png.asset.json";
+import project3 from "@/assets/project-3.png.asset.json";
+import project4 from "@/assets/project-4.png.asset.json";
+import project5 from "@/assets/project-5.png.asset.json";
+import project6 from "@/assets/project-6.png.asset.json";
+
 export type Project = {
   title: string;
   category: string;
@@ -58,6 +65,7 @@ export type Project = {
   year: string;
   gradient: string;
   emoji: string;
+  image: string;
 };
 
 export const projects: Project[] = [
