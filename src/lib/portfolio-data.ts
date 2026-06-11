@@ -115,6 +115,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-orange-500/30 to-amber-500/20",
     emoji: "🍔",
+    image: project4.url,
   },
   {
     title: "ACTMS — Agricultural Monitoring",
