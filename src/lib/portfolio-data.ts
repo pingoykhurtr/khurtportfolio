@@ -127,6 +127,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-lime-500/30 to-green-600/20",
     emoji: "🌾",
+    image: project5.url,
   },
   {
     title: "Fitness Landing Page",
