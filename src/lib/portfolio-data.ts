@@ -103,6 +103,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-cyan-500/30 to-emerald-500/20",
     emoji: "💧",
+    image: project3.url,
   },
   {
     title: "Burger Mobile UI",
