@@ -665,24 +665,29 @@ function ProjectCard({
       className="group relative block overflow-hidden rounded-3xl border border-border bg-card text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]"
     >
       <div className={`relative h-48 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1),transparent_60%)]" />
-        <div className="absolute inset-0 grid place-items-center text-7xl transition-transform duration-700 group-hover:scale-110">
-          {project.emoji}
-        </div>
-        <div className="absolute left-3 top-3">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:blur-md"
+        />
+        <div className="absolute left-3 top-3 z-10">
           <Badge className="bg-background/80 text-foreground backdrop-blur">
             {project.category}
           </Badge>
         </div>
+        <div className="absolute right-3 top-3 z-10 text-3xl drop-shadow-lg">
+          {project.emoji}
+        </div>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <p className="line-clamp-3 text-xs text-muted-foreground">{project.description}</p>
           <div className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
             View details <ArrowRight className="ml-1 h-3.5 w-3.5" />
           </div>
         </div>
       </div>
+
 
       <div className="p-5">
         <h3 className="font-display text-lg font-semibold transition-colors group-hover:text-primary">
