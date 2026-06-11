@@ -481,32 +481,29 @@ function AboutModal({
           <DialogDescription>The deeper version of the bio.</DialogDescription>
         </DialogHeader>
         <div className="mt-4 space-y-5 text-sm">
-          <AboutBlock title="Full Name" body="Khurt R. Pingoy" />
+          <AboutBlock title="Full Name" body="Khurt Rocaberte Pingoy" />
           <AboutBlock
             title="Education"
-            body="4th Year — BS in Information Technology / Software Engineering track. Currently focused on web technologies, Java programming, and database systems."
+            body={
+              "• 4th Year — BS in Information Systems (Post-Secondary)\n" +
+              "• Secondary Education — F. Bustamante NHS\n" +
+              "• Primary Education — Sixto Babao Elementary School"
+            }
           />
           <AboutBlock
             title="Goals"
-            body="Become a confident full-stack developer who can take ideas from sketch to shipped product, with a strong eye for user experience."
+            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software engineering and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
           />
           <AboutBlock
             title="Interests"
             body="Web development, mobile UI design, productivity tools, and learning new languages/frameworks through small side projects."
           />
           <AboutBlock
-            title="Hobbies"
-            body="Photography at the beach, gaming, watching tech YouTube, and sketching UI ideas in Figma."
-          />
-          <AboutBlock
             title="Programming Journey"
             body="Started with HTML & CSS for school projects, fell in love with the logic side through Java, and now I'm expanding into JavaScript, React, and Node."
           />
-          <AboutBlock
-            title="Career Aspirations"
-            body="Join a team where I can learn from senior engineers, contribute to real products, and eventually grow into a full-stack engineer with UI/UX strengths."
-          />
         </div>
+
       </DialogContent>
     </Dialog>
   );
