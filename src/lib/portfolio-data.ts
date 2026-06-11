@@ -91,6 +91,7 @@ export const projects: Project[] = [
     year: "2024",
     gradient: "from-green-500/30 to-teal-500/20",
     emoji: "🎨",
+    image: project2.url,
   },
   {
     title: "Water Billing System",
