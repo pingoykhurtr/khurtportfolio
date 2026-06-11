@@ -721,13 +721,21 @@ function ProjectModal({
         {project && (
           <>
             <div
-              className={`relative -mx-6 -mt-6 mb-2 grid h-40 place-items-center overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
+              className={`relative -mx-6 -mt-6 mb-2 h-56 overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
             >
-              <div className="text-7xl">{project.emoji}</div>
-              <Badge className="absolute left-4 top-4 bg-background/80 text-foreground backdrop-blur">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
+              <div className="absolute right-4 top-4 z-10 text-3xl drop-shadow-lg">
+                {project.emoji}
+              </div>
             </div>
+
             <DialogHeader>
               <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
               <DialogDescription>{project.description}</DialogDescription>
