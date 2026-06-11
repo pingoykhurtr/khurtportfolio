@@ -515,7 +515,8 @@ function AboutBlock({ title, body }: { title: string; body: string }) {
       <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
         {title}
       </div>
-      <p className="text-muted-foreground">{body}</p>
+      <p className="whitespace-pre-line text-muted-foreground">{body}</p>
+
     </div>
   );
 }
