@@ -481,32 +481,29 @@ function AboutModal({
           <DialogDescription>The deeper version of the bio.</DialogDescription>
         </DialogHeader>
         <div className="mt-4 space-y-5 text-sm">
-          <AboutBlock title="Full Name" body="Khurt R. Pingoy" />
+          <AboutBlock title="Full Name" body="Khurt Rocaberte Pingoy" />
           <AboutBlock
             title="Education"
-            body="4th Year — BS in Information Technology / Software Engineering track. Currently focused on web technologies, Java programming, and database systems."
+            body={
+              "• 4th Year — BS in Information Systems (Post-Secondary)\n" +
+              "• Secondary Education — F. Bustamante NHS\n" +
+              "• Primary Education — Sixto Babao Elementary School"
+            }
           />
           <AboutBlock
             title="Goals"
-            body="Become a confident full-stack developer who can take ideas from sketch to shipped product, with a strong eye for user experience."
+            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software engineering and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
           />
           <AboutBlock
             title="Interests"
             body="Web development, mobile UI design, productivity tools, and learning new languages/frameworks through small side projects."
           />
           <AboutBlock
-            title="Hobbies"
-            body="Photography at the beach, gaming, watching tech YouTube, and sketching UI ideas in Figma."
-          />
-          <AboutBlock
             title="Programming Journey"
             body="Started with HTML & CSS for school projects, fell in love with the logic side through Java, and now I'm expanding into JavaScript, React, and Node."
           />
-          <AboutBlock
-            title="Career Aspirations"
-            body="Join a team where I can learn from senior engineers, contribute to real products, and eventually grow into a full-stack engineer with UI/UX strengths."
-          />
         </div>
+
       </DialogContent>
     </Dialog>
   );
@@ -518,7 +515,8 @@ function AboutBlock({ title, body }: { title: string; body: string }) {
       <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
         {title}
       </div>
-      <p className="text-muted-foreground">{body}</p>
+      <p className="whitespace-pre-line text-muted-foreground">{body}</p>
+
     </div>
   );
 }
@@ -667,24 +665,29 @@ function ProjectCard({
       className="group relative block overflow-hidden rounded-3xl border border-border bg-card text-left transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]"
     >
       <div className={`relative h-48 overflow-hidden bg-gradient-to-br ${project.gradient}`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1),transparent_60%)]" />
-        <div className="absolute inset-0 grid place-items-center text-7xl transition-transform duration-700 group-hover:scale-110">
-          {project.emoji}
-        </div>
-        <div className="absolute left-3 top-3">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:blur-md"
+        />
+        <div className="absolute left-3 top-3 z-10">
           <Badge className="bg-background/80 text-foreground backdrop-blur">
             {project.category}
           </Badge>
         </div>
+        <div className="absolute right-3 top-3 z-10 text-3xl drop-shadow-lg">
+          {project.emoji}
+        </div>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <p className="line-clamp-3 text-xs text-muted-foreground">{project.description}</p>
           <div className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
             View details <ArrowRight className="ml-1 h-3.5 w-3.5" />
           </div>
         </div>
       </div>
+
 
       <div className="p-5">
         <h3 className="font-display text-lg font-semibold transition-colors group-hover:text-primary">
@@ -718,13 +721,21 @@ function ProjectModal({
         {project && (
           <>
             <div
-              className={`relative -mx-6 -mt-6 mb-2 grid h-40 place-items-center overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
+              className={`relative -mx-6 -mt-6 mb-2 h-56 overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
             >
-              <div className="text-7xl">{project.emoji}</div>
-              <Badge className="absolute left-4 top-4 bg-background/80 text-foreground backdrop-blur">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
+              <div className="absolute right-4 top-4 z-10 text-3xl drop-shadow-lg">
+                {project.emoji}
+              </div>
             </div>
+
             <DialogHeader>
               <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
               <DialogDescription>{project.description}</DialogDescription>

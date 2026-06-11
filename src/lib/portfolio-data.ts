@@ -48,6 +48,13 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
+import project1 from "@/assets/project-1.png.asset.json";
+import project2 from "@/assets/project-2.png.asset.json";
+import project3 from "@/assets/project-3.png.asset.json";
+import project4 from "@/assets/project-4.png.asset.json";
+import project5 from "@/assets/project-5.png.asset.json";
+import project6 from "@/assets/project-6.png.asset.json";
+
 export type Project = {
   title: string;
   category: string;
@@ -58,6 +65,7 @@ export type Project = {
   year: string;
   gradient: string;
   emoji: string;
+  image: string;
 };
 
 export const projects: Project[] = [
@@ -71,6 +79,7 @@ export const projects: Project[] = [
     year: "2024",
     gradient: "from-emerald-500/30 to-lime-500/20",
     emoji: "⭕",
+    image: project1.url,
   },
   {
     title: "Java Graphics Project",
@@ -82,6 +91,7 @@ export const projects: Project[] = [
     year: "2024",
     gradient: "from-green-500/30 to-teal-500/20",
     emoji: "🎨",
+    image: project2.url,
   },
   {
     title: "Water Billing System",
@@ -93,6 +103,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-cyan-500/30 to-emerald-500/20",
     emoji: "💧",
+    image: project3.url,
   },
   {
     title: "Burger Mobile UI",
@@ -104,6 +115,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-orange-500/30 to-amber-500/20",
     emoji: "🍔",
+    image: project4.url,
   },
   {
     title: "ACTMS — Agricultural Monitoring",
@@ -115,6 +127,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-lime-500/30 to-green-600/20",
     emoji: "🌾",
+    image: project5.url,
   },
   {
     title: "Fitness Landing Page",
@@ -126,5 +139,6 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-rose-500/30 to-red-500/20",
     emoji: "💪",
+    image: project6.url,
   },
 ];
