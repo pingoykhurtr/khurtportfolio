@@ -79,6 +79,7 @@ export const projects: Project[] = [
     year: "2024",
     gradient: "from-emerald-500/30 to-lime-500/20",
     emoji: "⭕",
+    image: project1.url,
   },
   {
     title: "Java Graphics Project",
