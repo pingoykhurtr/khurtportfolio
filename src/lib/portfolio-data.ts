@@ -139,5 +139,6 @@ export const projects: Project[] = [
     year: "2025",
     gradient: "from-rose-500/30 to-red-500/20",
     emoji: "💪",
+    image: project6.url,
   },
 ];
