@@ -39,21 +39,22 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Khurt Pingoy — Software Engineering Portfolio" },
+      { title: "Khurt Pingoy — Information Systems Portfolio" },
       {
         name: "description",
         content:
-          "4th year software engineering student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
+          "4th year BS Information Systems student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
       },
       { property: "og:title", content: "Khurt Pingoy — Portfolio" },
       {
         property: "og:description",
-        content: "Software engineering student building Java apps, websites, and UI/UX prototypes.",
+        content: "Information Systems student building Java apps, websites, and UI/UX prototypes.",
       },
     ],
   }),
   component: PortfolioPage,
 });
+
 
 const NAV_LINKS = [
   { id: "home", label: "Home" },
@@ -62,6 +63,14 @@ const NAV_LINKS = [
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
+
+const SOCIAL_LINKS: { Icon: React.ComponentType<{ className?: string }>; href: string; label: string }[] = [
+  { Icon: Github, href: "https://github.com/pingoykhurtr", label: "GitHub" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/pingoykhurtr/", label: "LinkedIn" },
+  { Icon: Facebook, href: "https://www.facebook.com/khurt.820314", label: "Facebook" },
+  { Icon: Mail, href: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox", label: "Gmail" },
+];
+
 
 function useTheme() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -301,7 +310,7 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           <div className="mt-4 h-8 font-display text-xl text-muted-foreground sm:text-2xl">
             <TypeAnimation
               sequence={[
-                "Software Engineering Student",
+                "Information Systems Student",
                 2000,
                 "Future Full Stack Developer",
                 2000,
@@ -316,8 +325,8 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             />
           </div>
           <p className="mt-6 max-w-md text-base text-muted-foreground">
-            4th year student building Java apps, responsive websites, and UI/UX prototypes —
-            still exploring, always learning.
+            4th year BS Information Systems student building Java apps, responsive websites, and
+            UI/UX prototypes — still exploring, always learning.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -343,22 +352,20 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           </div>
 
           <div className="mt-10 flex gap-5">
-            {[
-              { Icon: Github, href: "#" },
-              { Icon: Linkedin, href: "#" },
-              { Icon: Facebook, href: "#" },
-              { Icon: Mail, href: "mailto:pingoykhurtr@gmail.com" },
-            ].map(({ Icon, href }, i) => (
+            {SOCIAL_LINKS.map(({ Icon, href, label }) => (
               <a
-                key={i}
+                key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground transition-all hover:-translate-y-1 hover:text-primary"
-                aria-label="social"
+                aria-label={label}
               >
                 <Icon className="h-5 w-5" />
               </a>
             ))}
           </div>
+
         </motion.div>
 
         <motion.div
@@ -381,8 +388,9 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             </div>
             <div className="glass absolute -right-6 top-10 rounded-2xl px-4 py-3 text-sm shadow-lg">
               <div className="font-mono text-xs text-muted-foreground">Focus</div>
-              <div className="font-semibold text-primary">Software Eng.</div>
+              <div className="font-semibold text-primary">Info Systems</div>
             </div>
+
           </div>
         </motion.div>
       </div>
@@ -413,12 +421,13 @@ function About({ onOpen }: { onOpen: () => void }) {
         <motion.div {...fadeUp(0.15)}>
           <div className="font-mono text-sm text-primary">— About me</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Curious learner, <span className="text-gradient">future engineer</span>
+            Curious learner, <span className="text-gradient">future IS professional</span>
           </h2>
           <p className="mt-6 text-muted-foreground">
-            I'm still figuring out what I want to become — but right now I'm focused on the
-            fundamentals of software engineering and design. I practice in Figma for UI/UX work and
-            study Java, HTML, CSS, and JavaScript to build my coding foundation.
+            I'm a BS Information Systems student, still figuring out what I want to become — but
+            right now I'm focused on the fundamentals of software development and design. I
+            practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my
+            coding foundation.
           </p>
           <p className="mt-4 text-muted-foreground">
             Each small step matters. Every project, course, and late-night debug session brings me
@@ -427,10 +436,11 @@ function About({ onOpen }: { onOpen: () => void }) {
 
           <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
             <Info label="Name" value="Khurt Pingoy" />
-            <Info label="Year" value="4th Year Student" />
+            <Info label="Course" value="BS Information Systems" />
             <Info label="Email" value="pingoykhurtr@gmail.com" />
             <Info label="Status" value="Open to projects" />
           </div>
+
 
           <Button
             onClick={onOpen}
@@ -492,7 +502,7 @@ function AboutModal({
           />
           <AboutBlock
             title="Goals"
-            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software engineering and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
+            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software development and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
           />
           <AboutBlock
             title="Interests"
@@ -524,10 +534,25 @@ function AboutBlock({ title, body }: { title: string; body: string }) {
 /* ---------------- SKILLS ---------------- */
 
 function Skills() {
+  const [hovered, setHovered] = useState<string | null>(null);
   return (
     <section id="skills" className="relative py-28">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="mx-auto max-w-6xl px-4">
+
+      {/* Background blur overlay when any skill is hovered */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="pointer-events-none fixed inset-0 z-30 bg-background/40 backdrop-blur-md"
+          />
+        )}
+      </AnimatePresence>
+
+      <div className="relative mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
           <div className="font-mono text-sm text-primary">— What I work with</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
@@ -551,7 +576,12 @@ function Skills() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {cat.skills.map((s) => (
-                  <SkillCard key={s.name} skill={s} />
+                  <SkillCard
+                    key={s.name}
+                    skill={s}
+                    isHovered={hovered === s.name}
+                    onHover={(v) => setHovered(v ? s.name : null)}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -562,15 +592,22 @@ function Skills() {
   );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
-  const [hover, setHover] = useState(false);
+function SkillCard({
+  skill,
+  isHovered,
+  onHover,
+}: {
+  skill: Skill;
+  isHovered: boolean;
+  onHover: (v: boolean) => void;
+}) {
   return (
     <div
-      className="group relative"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className={`group relative transition-all duration-300 ${isHovered ? "z-40" : "z-0"}`}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
     >
-      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-card)]">
+      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-glow)]">
         <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative flex items-start justify-between">
           <div className="text-3xl">{skill.icon}</div>
@@ -600,15 +637,15 @@ function SkillCard({ skill }: { skill: Skill }) {
 
       {/* Floating info popup */}
       <AnimatePresence>
-        {hover && (
+        {isHovered && (
           <motion.div
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-72 -translate-x-1/2"
+            className="pointer-events-none absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2"
           >
-            <div className="glass rounded-2xl border-primary/30 p-4 shadow-[var(--shadow-elevated)]">
+            <div className="glass rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-elevated)]">
               <div className="text-sm font-semibold text-primary">{skill.name}</div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
@@ -622,6 +659,7 @@ function SkillCard({ skill }: { skill: Skill }) {
     </div>
   );
 }
+
 
 /* ---------------- PROJECTS ---------------- */
 
@@ -717,57 +755,67 @@ function ProjectModal({
 }) {
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-2xl border-primary/20 bg-card">
+      <DialogContent className="max-h-[92vh] max-w-4xl overflow-y-auto border-primary/20 bg-card p-0">
         {project && (
           <>
-            <div
-              className={`relative -mx-6 -mt-6 mb-2 h-56 overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
+            {/* Prominent close button */}
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute right-3 top-3 z-50 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition hover:scale-110 hover:bg-primary hover:text-primary-foreground"
             >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="relative w-full overflow-hidden rounded-t-lg bg-black">
               <img
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="mx-auto block max-h-[60vh] w-full object-contain"
               />
               <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
-              <div className="absolute right-4 top-4 z-10 text-3xl drop-shadow-lg">
+              <div className="absolute right-16 top-4 z-10 text-3xl drop-shadow-lg">
                 {project.emoji}
               </div>
             </div>
 
-            <DialogHeader>
-              <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
-              <DialogDescription>{project.description}</DialogDescription>
-            </DialogHeader>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <ProjectField label="My Role" value={project.role} />
-              <ProjectField label="Year" value={project.year} />
-            </div>
-            <div className="mt-2">
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                Technologies
+            <div className="px-6 pb-6 pt-4">
+              <DialogHeader>
+                <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
+                <DialogDescription>{project.description}</DialogDescription>
+              </DialogHeader>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <ProjectField label="My Role" value={project.role} />
+                <ProjectField label="Year" value={project.year} />
               </div>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <Badge key={t} variant="outline" className="border-primary/40">
-                    {t}
-                  </Badge>
-                ))}
+              <div className="mt-4">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Technologies
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <Badge key={t} variant="outline" className="border-primary/40">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="mt-2">
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                Key Features
+              <div className="mt-4">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Key Features
+                </div>
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  {project.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <span className="text-primary">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1.5 text-sm text-muted-foreground">
-                {project.features.map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <span className="text-primary">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
             </div>
           </>
         )}
@@ -775,6 +823,7 @@ function ProjectModal({
     </Dialog>
   );
 }
+
 
 function ProjectField({ label, value }: { label: string; value: string }) {
   return (
@@ -826,22 +875,24 @@ function Contact() {
 
         <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
           <motion.div {...fadeUp()} className="space-y-4">
-            <ContactRow Icon={Mail} label="Email" value="pingoykhurtr@gmail.com" />
-            <ContactRow Icon={Phone} label="Phone" value="Available on request" />
+            <ContactRow
+              Icon={Mail}
+              label="Email"
+              value="pingoykhurtr@gmail.com"
+              href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+            />
+            <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
 
             <div className="glass mt-6 rounded-2xl p-5">
               <div className="text-sm font-semibold">Find me online</div>
               <div className="mt-3 flex gap-3">
-                {[
-                  { Icon: Github, label: "GitHub" },
-                  { Icon: Linkedin, label: "LinkedIn" },
-                  { Icon: Facebook, label: "Facebook" },
-                  { Icon: Mail, label: "Gmail" },
-                ].map(({ Icon, label }) => (
+                {SOCIAL_LINKS.map(({ Icon, href, label }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="grid h-11 w-11 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-all hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground"
                   >
@@ -851,6 +902,7 @@ function Contact() {
               </div>
             </div>
           </motion.div>
+
 
           <motion.form
             {...fadeUp(0.1)}
@@ -913,13 +965,15 @@ function ContactRow({
   Icon,
   label,
   value,
+  href,
 }: {
   Icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
+  href?: string;
 }) {
-  return (
-    <div className="flex items-center gap-4 rounded-2xl border border-border bg-surface/50 p-4 transition-colors hover:border-primary/40">
+  const inner = (
+    <>
       <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/15 text-primary">
         <Icon className="h-5 w-5" />
       </div>
@@ -927,9 +981,20 @@ function ContactRow({
         <div className="text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
         <div className="font-medium">{value}</div>
       </div>
-    </div>
+    </>
   );
+  const className =
+    "flex items-center gap-4 rounded-2xl border border-border bg-surface/50 p-4 transition-colors hover:border-primary/40";
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {inner}
+      </a>
+    );
+  }
+  return <div className={className}>{inner}</div>;
 }
+
 
 /* ---------------- FOOTER ---------------- */
 
