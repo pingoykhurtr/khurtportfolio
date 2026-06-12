@@ -965,13 +965,15 @@ function ContactRow({
   Icon,
   label,
   value,
+  href,
 }: {
   Icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
+  href?: string;
 }) {
-  return (
-    <div className="flex items-center gap-4 rounded-2xl border border-border bg-surface/50 p-4 transition-colors hover:border-primary/40">
+  const inner = (
+    <>
       <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/15 text-primary">
         <Icon className="h-5 w-5" />
       </div>
@@ -979,9 +981,20 @@ function ContactRow({
         <div className="text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
         <div className="font-medium">{value}</div>
       </div>
-    </div>
+    </>
   );
+  const className =
+    "flex items-center gap-4 rounded-2xl border border-border bg-surface/50 p-4 transition-colors hover:border-primary/40";
+  if (href) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {inner}
+      </a>
+    );
+  }
+  return <div className={className}>{inner}</div>;
 }
+
 
 /* ---------------- FOOTER ---------------- */
 
