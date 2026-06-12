@@ -421,12 +421,13 @@ function About({ onOpen }: { onOpen: () => void }) {
         <motion.div {...fadeUp(0.15)}>
           <div className="font-mono text-sm text-primary">— About me</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Curious learner, <span className="text-gradient">future engineer</span>
+            Curious learner, <span className="text-gradient">future IS professional</span>
           </h2>
           <p className="mt-6 text-muted-foreground">
-            I'm still figuring out what I want to become — but right now I'm focused on the
-            fundamentals of software engineering and design. I practice in Figma for UI/UX work and
-            study Java, HTML, CSS, and JavaScript to build my coding foundation.
+            I'm a BS Information Systems student, still figuring out what I want to become — but
+            right now I'm focused on the fundamentals of software development and design. I
+            practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my
+            coding foundation.
           </p>
           <p className="mt-4 text-muted-foreground">
             Each small step matters. Every project, course, and late-night debug session brings me
@@ -435,10 +436,11 @@ function About({ onOpen }: { onOpen: () => void }) {
 
           <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
             <Info label="Name" value="Khurt Pingoy" />
-            <Info label="Year" value="4th Year Student" />
+            <Info label="Course" value="BS Information Systems" />
             <Info label="Email" value="pingoykhurtr@gmail.com" />
             <Info label="Status" value="Open to projects" />
           </div>
+
 
           <Button
             onClick={onOpen}
