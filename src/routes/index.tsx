@@ -502,7 +502,7 @@ function AboutModal({
           />
           <AboutBlock
             title="Goals"
-            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software engineering and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
+            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software development and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
           />
           <AboutBlock
             title="Interests"
