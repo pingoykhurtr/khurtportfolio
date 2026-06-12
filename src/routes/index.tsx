@@ -39,21 +39,22 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Khurt Pingoy — Software Engineering Portfolio" },
+      { title: "Khurt Pingoy — Information Systems Portfolio" },
       {
         name: "description",
         content:
-          "4th year software engineering student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
+          "4th year BS Information Systems student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
       },
       { property: "og:title", content: "Khurt Pingoy — Portfolio" },
       {
         property: "og:description",
-        content: "Software engineering student building Java apps, websites, and UI/UX prototypes.",
+        content: "Information Systems student building Java apps, websites, and UI/UX prototypes.",
       },
     ],
   }),
   component: PortfolioPage,
 });
+
 
 const NAV_LINKS = [
   { id: "home", label: "Home" },
