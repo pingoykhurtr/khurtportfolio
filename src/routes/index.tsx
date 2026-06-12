@@ -302,7 +302,7 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           <div className="mt-4 h-8 font-display text-xl text-muted-foreground sm:text-2xl">
             <TypeAnimation
               sequence={[
-                "Software Engineering Student",
+                "Information Systems Student",
                 2000,
                 "Future Full Stack Developer",
                 2000,
@@ -317,8 +317,8 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             />
           </div>
           <p className="mt-6 max-w-md text-base text-muted-foreground">
-            4th year student building Java apps, responsive websites, and UI/UX prototypes —
-            still exploring, always learning.
+            4th year BS Information Systems student building Java apps, responsive websites, and
+            UI/UX prototypes — still exploring, always learning.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -344,22 +344,20 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           </div>
 
           <div className="mt-10 flex gap-5">
-            {[
-              { Icon: Github, href: "#" },
-              { Icon: Linkedin, href: "#" },
-              { Icon: Facebook, href: "#" },
-              { Icon: Mail, href: "mailto:pingoykhurtr@gmail.com" },
-            ].map(({ Icon, href }, i) => (
+            {SOCIAL_LINKS.map(({ Icon, href, label }) => (
               <a
-                key={i}
+                key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground transition-all hover:-translate-y-1 hover:text-primary"
-                aria-label="social"
+                aria-label={label}
               >
                 <Icon className="h-5 w-5" />
               </a>
             ))}
           </div>
+
         </motion.div>
 
         <motion.div
