@@ -875,22 +875,24 @@ function Contact() {
 
         <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
           <motion.div {...fadeUp()} className="space-y-4">
-            <ContactRow Icon={Mail} label="Email" value="pingoykhurtr@gmail.com" />
-            <ContactRow Icon={Phone} label="Phone" value="Available on request" />
+            <ContactRow
+              Icon={Mail}
+              label="Email"
+              value="pingoykhurtr@gmail.com"
+              href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+            />
+            <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
 
             <div className="glass mt-6 rounded-2xl p-5">
               <div className="text-sm font-semibold">Find me online</div>
               <div className="mt-3 flex gap-3">
-                {[
-                  { Icon: Github, label: "GitHub" },
-                  { Icon: Linkedin, label: "LinkedIn" },
-                  { Icon: Facebook, label: "Facebook" },
-                  { Icon: Mail, label: "Gmail" },
-                ].map(({ Icon, label }) => (
+                {SOCIAL_LINKS.map(({ Icon, href, label }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="grid h-11 w-11 place-items-center rounded-full border border-border bg-surface text-muted-foreground transition-all hover:-translate-y-1 hover:border-primary hover:bg-primary hover:text-primary-foreground"
                   >
@@ -900,6 +902,7 @@ function Contact() {
               </div>
             </div>
           </motion.div>
+
 
           <motion.form
             {...fadeUp(0.1)}
