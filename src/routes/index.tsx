@@ -64,6 +64,14 @@ const NAV_LINKS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SOCIAL_LINKS: { Icon: React.ComponentType<{ className?: string }>; href: string; label: string }[] = [
+  { Icon: Github, href: "https://github.com/pingoykhurtr", label: "GitHub" },
+  { Icon: Linkedin, href: "https://www.linkedin.com/in/pingoykhurtr/", label: "LinkedIn" },
+  { Icon: Facebook, href: "https://www.facebook.com/khurt.820314", label: "Facebook" },
+  { Icon: Mail, href: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox", label: "Gmail" },
+];
+
+
 function useTheme() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
