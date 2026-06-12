@@ -16,7 +16,7 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Software Engineering Core",
+    title: "Development Core",
     subtitle: "Languages & frameworks I build with",
     skills: [
       { name: "Java", icon: "☕", level: "Intermediate", progress: 70, short: "OOP fundamentals & desktop apps", detail: "Object-oriented programming, Swing UI, file I/O, and clean code structure.", example: "Built a Tic Tac Toe game and graphics project using Java Swing." },
