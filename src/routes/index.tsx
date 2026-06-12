@@ -534,10 +534,25 @@ function AboutBlock({ title, body }: { title: string; body: string }) {
 /* ---------------- SKILLS ---------------- */
 
 function Skills() {
+  const [hovered, setHovered] = useState<string | null>(null);
   return (
     <section id="skills" className="relative py-28">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-      <div className="mx-auto max-w-6xl px-4">
+
+      {/* Background blur overlay when any skill is hovered */}
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="pointer-events-none fixed inset-0 z-30 bg-background/40 backdrop-blur-md"
+          />
+        )}
+      </AnimatePresence>
+
+      <div className="relative mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
           <div className="font-mono text-sm text-primary">— What I work with</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
@@ -561,7 +576,12 @@ function Skills() {
 
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {cat.skills.map((s) => (
-                  <SkillCard key={s.name} skill={s} />
+                  <SkillCard
+                    key={s.name}
+                    skill={s}
+                    isHovered={hovered === s.name}
+                    onHover={(v) => setHovered(v ? s.name : (cur) => (cur === s.name ? null : cur) as any)}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -572,15 +592,22 @@ function Skills() {
   );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
-  const [hover, setHover] = useState(false);
+function SkillCard({
+  skill,
+  isHovered,
+  onHover,
+}: {
+  skill: Skill;
+  isHovered: boolean;
+  onHover: (v: boolean) => void;
+}) {
   return (
     <div
-      className="group relative"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className={`group relative transition-all duration-300 ${isHovered ? "z-40" : "z-0"}`}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
     >
-      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-card)]">
+      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-glow)]">
         <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative flex items-start justify-between">
           <div className="text-3xl">{skill.icon}</div>
@@ -610,15 +637,15 @@ function SkillCard({ skill }: { skill: Skill }) {
 
       {/* Floating info popup */}
       <AnimatePresence>
-        {hover && (
+        {isHovered && (
           <motion.div
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-none absolute left-1/2 top-full z-30 mt-3 w-72 -translate-x-1/2"
+            className="pointer-events-none absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2"
           >
-            <div className="glass rounded-2xl border-primary/30 p-4 shadow-[var(--shadow-elevated)]">
+            <div className="glass rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-elevated)]">
               <div className="text-sm font-semibold text-primary">{skill.name}</div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
@@ -632,6 +659,7 @@ function SkillCard({ skill }: { skill: Skill }) {
     </div>
   );
 }
+
 
 /* ---------------- PROJECTS ---------------- */
 
