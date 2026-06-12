@@ -580,7 +580,7 @@ function Skills() {
                     key={s.name}
                     skill={s}
                     isHovered={hovered === s.name}
-                    onHover={(v) => setHovered(v ? s.name : (cur) => (cur === s.name ? null : cur) as any)}
+                    onHover={(v) => setHovered(v ? s.name : null)}
                   />
                 ))}
               </div>
