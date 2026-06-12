@@ -755,57 +755,67 @@ function ProjectModal({
 }) {
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-w-2xl border-primary/20 bg-card">
+      <DialogContent className="max-h-[92vh] max-w-4xl overflow-y-auto border-primary/20 bg-card p-0">
         {project && (
           <>
-            <div
-              className={`relative -mx-6 -mt-6 mb-2 h-56 overflow-hidden rounded-t-lg bg-gradient-to-br ${project.gradient}`}
+            {/* Prominent close button */}
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close"
+              className="absolute right-3 top-3 z-50 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition hover:scale-110 hover:bg-primary hover:text-primary-foreground"
             >
+              <X className="h-5 w-5" />
+            </button>
+
+            <div className="relative w-full overflow-hidden rounded-t-lg bg-black">
               <img
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="mx-auto block max-h-[60vh] w-full object-contain"
               />
               <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
-              <div className="absolute right-4 top-4 z-10 text-3xl drop-shadow-lg">
+              <div className="absolute right-16 top-4 z-10 text-3xl drop-shadow-lg">
                 {project.emoji}
               </div>
             </div>
 
-            <DialogHeader>
-              <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
-              <DialogDescription>{project.description}</DialogDescription>
-            </DialogHeader>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <ProjectField label="My Role" value={project.role} />
-              <ProjectField label="Year" value={project.year} />
-            </div>
-            <div className="mt-2">
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                Technologies
+            <div className="px-6 pb-6 pt-4">
+              <DialogHeader>
+                <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
+                <DialogDescription>{project.description}</DialogDescription>
+              </DialogHeader>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <ProjectField label="My Role" value={project.role} />
+                <ProjectField label="Year" value={project.year} />
               </div>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <Badge key={t} variant="outline" className="border-primary/40">
-                    {t}
-                  </Badge>
-                ))}
+              <div className="mt-4">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Technologies
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((t) => (
+                    <Badge key={t} variant="outline" className="border-primary/40">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="mt-2">
-              <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                Key Features
+              <div className="mt-4">
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Key Features
+                </div>
+                <ul className="space-y-1.5 text-sm text-muted-foreground">
+                  {project.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <span className="text-primary">✓</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1.5 text-sm text-muted-foreground">
-                {project.features.map((f) => (
-                  <li key={f} className="flex gap-2">
-                    <span className="text-primary">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
             </div>
           </>
         )}
@@ -813,6 +823,7 @@ function ProjectModal({
     </Dialog>
   );
 }
+
 
 function ProjectField({ label, value }: { label: string; value: string }) {
   return (
