@@ -180,8 +180,18 @@ function Nav({
   setNavOpen: (v: boolean) => void;
 }) {
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const y = window.scrollY + 120;
+      let current = "home";
+      for (const l of NAV_LINKS) {
+        const el = document.getElementById(l.id);
+        if (el && el.offsetTop <= y) current = l.id;
+      }
+      setActive(current);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -190,15 +200,13 @@ function Nav({
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3" : "py-5"
+        scrolled
+          ? "border-b border-primary/10 bg-[rgba(17,19,23,0.85)] py-3 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent py-5"
       }`}
     >
       <div className="mx-auto max-w-6xl px-4">
-        <div
-          className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 ${
-            scrolled ? "glass shadow-lg" : "bg-transparent"
-          }`}
-        >
+        <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToId("home")}
             className="font-display text-xl font-bold tracking-tight"
@@ -207,22 +215,32 @@ function Nav({
           </button>
 
           <nav className="hidden items-center gap-1 md:flex">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => scrollToId(l.id)}
-                className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {l.label}
-              </button>
-            ))}
+            {NAV_LINKS.map((l) => {
+              const isActive = active === l.id;
+              return (
+                <button
+                  key={l.id}
+                  onClick={() => scrollToId(l.id)}
+                  className={`group relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-primary transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
             <button
               onClick={toggle}
               aria-label="Toggle theme"
-              className="relative grid h-10 w-10 place-items-center rounded-full border border-border bg-surface text-foreground transition-all hover:border-primary hover:text-primary"
+              className="relative grid h-10 w-10 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition-all hover:border-primary hover:text-primary"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {theme === "dark" ? (
@@ -250,7 +268,7 @@ function Nav({
             </button>
 
             <button
-              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface md:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface/80 md:hidden"
               onClick={() => setNavOpen(!navOpen)}
               aria-label="Menu"
             >
@@ -266,7 +284,7 @@ function Nav({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="glass mt-2 overflow-hidden rounded-2xl p-2 md:hidden"
+              className="glass mt-3 overflow-hidden rounded-2xl p-2 md:hidden"
             >
               {NAV_LINKS.map((l) => (
                 <button
@@ -275,7 +293,9 @@ function Nav({
                     scrollToId(l.id);
                     setNavOpen(false);
                   }}
-                  className="block w-full rounded-xl px-4 py-3 text-left text-sm font-medium hover:bg-accent"
+                  className={`block w-full rounded-xl px-4 py-3 text-left text-sm font-medium hover:bg-accent ${
+                    active === l.id ? "text-primary" : ""
+                  }`}
                 >
                   {l.label}
                 </button>
