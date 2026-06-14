@@ -810,7 +810,7 @@ function Projects({ onSelect }: { onSelect: (p: Project) => void }) {
         <motion.div {...fadeUp()} className="text-center">
           <div className="font-mono text-sm text-primary">— Selected work</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Latest <span className="text-gradient">Projects</span>
+            Data <span className="text-gradient">Projects</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
             Dashboards, analyses and data projects. Hover for the insight, click for the full case.
