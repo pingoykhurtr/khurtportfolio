@@ -858,10 +858,13 @@ function ProjectCard({
         </div>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <p className="line-clamp-3 text-xs text-muted-foreground">{project.description}</p>
-          <div className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
-            View details <ArrowRight className="ml-1 h-3.5 w-3.5" />
+        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/80 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">Objective</div>
+          <p className="mt-0.5 line-clamp-2 text-xs text-foreground">{project.objective}</p>
+          <div className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-primary">Key Insight</div>
+          <p className="line-clamp-2 text-xs text-muted-foreground">{project.insights[0]}</p>
+          <div className="mt-2 inline-flex items-center text-xs font-semibold text-primary">
+            View full case <ArrowRight className="ml-1 h-3 w-3" />
           </div>
         </div>
       </div>
