@@ -813,7 +813,7 @@ function Projects({ onSelect }: { onSelect: (p: Project) => void }) {
             Latest <span className="text-gradient">Projects</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            School projects, prototypes, and personal experiments. Hover for the story.
+            Dashboards, analyses and data projects. Hover for the insight, click for the full case.
           </p>
         </motion.div>
 
