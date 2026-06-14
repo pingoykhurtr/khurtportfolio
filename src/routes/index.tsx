@@ -25,6 +25,11 @@ import {
   Code2,
   Smile,
   User,
+  BarChart3,
+  Database,
+  LineChart,
+  PieChart,
+  TrendingUp,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
@@ -47,16 +52,16 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Khurt Pingoy — Information Systems Portfolio" },
+      { title: "Khurt Pingoy — Aspiring Data Analyst Portfolio" },
       {
         name: "description",
         content:
-          "4th year BS Information Systems student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
+          "4th year student and aspiring Data Analyst. Dashboards, SQL, Python and BI projects by Khurt Pingoy.",
       },
-      { property: "og:title", content: "Khurt Pingoy — Portfolio" },
+      { property: "og:title", content: "Khurt Pingoy — Data Analyst Portfolio" },
       {
         property: "og:description",
-        content: "Information Systems student building Java apps, websites, and UI/UX prototypes.",
+        content: "Aspiring Data Analyst turning raw data into insights through dashboards and reports.",
       },
     ],
   }),
@@ -69,6 +74,7 @@ const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "journey", label: "Journey" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -151,6 +157,8 @@ function PortfolioPage() {
       <Skills />
 
       <Projects onSelect={setActiveProject} />
+
+      <Journey />
 
       <Contact />
 
@@ -353,13 +361,13 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           <div className="mt-4 h-8 font-display text-xl text-muted-foreground sm:text-2xl">
             <TypeAnimation
               sequence={[
-                "Information Systems Student",
+                "Aspiring Data Analyst",
                 2000,
-                "Future Full Stack Developer",
+                "Data-Driven Problem Solver",
                 2000,
-                "UI/UX Enthusiast",
+                "Future Business Intelligence Specialist",
                 2000,
-                "Problem Solver",
+                "Analytics Enthusiast",
                 2000,
               ]}
               speed={50}
@@ -368,8 +376,9 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             />
           </div>
           <p className="mt-6 max-w-md text-base text-muted-foreground">
-            4th year BS Information Systems student building Java apps, responsive websites, and
-            UI/UX prototypes — still exploring, always learning.
+            I am a 4th-year student passionate about transforming raw data into meaningful
+            insights. My goal is to become a Data Analyst who helps organizations make informed
+            decisions through data visualization, reporting, and analytical thinking.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -438,7 +447,7 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             </div>
             <div className="glass absolute -right-6 top-10 rounded-2xl px-4 py-3 text-sm shadow-lg">
               <div className="font-mono text-xs text-muted-foreground">Focus</div>
-              <div className="font-semibold text-primary">Info Systems</div>
+              <div className="font-semibold text-primary">Data Analytics</div>
             </div>
           </div>
         </motion.div>
@@ -481,7 +490,7 @@ function About({ onOpen }: { onOpen: () => void }) {
             <div className="grid grid-cols-3 gap-3 text-center">
               <Stat label="Projects" value="6+" />
               <Stat label="Year" value="4th" />
-              <Stat label="Skills" value="13+" />
+              <Stat label="Tools" value="11+" />
             </div>
           </div>
         </motion.div>
@@ -489,24 +498,23 @@ function About({ onOpen }: { onOpen: () => void }) {
         <motion.div {...fadeUp(0.15)}>
           <div className="font-mono text-sm text-primary">— About me</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Curious learner, <span className="text-gradient">future IS professional</span>
+            Turning data into <span className="text-gradient">decisions</span>
           </h2>
           <p className="mt-6 text-muted-foreground">
-            I'm a BS Information Systems student, still figuring out what I want to become — but
-            right now I'm focused on the fundamentals of software development and design. I
-            practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my
-            coding foundation.
+            I am currently developing my skills in data analysis, data visualization, database
+            management, and business reporting. I enjoy exploring datasets, identifying trends,
+            and converting information into actionable insights.
           </p>
           <p className="mt-4 text-muted-foreground">
-            Each small step matters. Every project, course, and late-night debug session brings me
-            closer to the path that fits me best.
+            My long-term goal is to become a professional Data Analyst and contribute to
+            data-driven decision making — bridging business questions and the numbers behind them.
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
             <Info label="Name" value="Khurt Pingoy" />
-            <Info label="Course" value="BS Information Systems" />
+            <Info label="Role" value="Aspiring Data Analyst" />
             <Info label="Email" value="pingoykhurtr@gmail.com" />
-            <Info label="Status" value="Open to projects" />
+            <Info label="Status" value="Open to data roles" />
           </div>
 
 
@@ -571,29 +579,29 @@ function AboutModal({
               <AboutBlock
                 Icon={User}
                 title="Personal Intro"
-                body="Khurt Rocaberte Pingoy — a curious, design-minded Information Systems student based in the Philippines who likes turning ideas into clean, working interfaces."
+                body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
               />
               <AboutBlock
                 Icon={GraduationCap}
                 title="Education"
                 body={
-                  "• BS Information Systems — 4th Year\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+                  "• 4th Year Student — Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
                 }
               />
               <AboutBlock
                 Icon={Code2}
                 title="Skills"
-                body="Java, HTML, CSS, JavaScript, MySQL, plus Figma & Canva for UI/UX. Learning React and Node along the way."
+                body="Excel, SQL, Python (Pandas), Power BI, Tableau and MySQL. Supported by HTML, CSS, JavaScript and Java."
               />
               <AboutBlock
                 Icon={Heart}
                 title="Interests"
-                body="Web development, mobile UI design, productivity tools, and exploring new frameworks through small side projects."
+                body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
               />
               <AboutBlock
                 Icon={Target}
                 title="Career Goals"
-                body="Grow into a well-rounded full-stack developer and UI/UX designer — shipping reliable software that actually helps people."
+                body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions."
               />
               <AboutBlock
                 Icon={Smile}
@@ -660,7 +668,7 @@ function Skills() {
             My <span className="text-gradient">Skills</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            A mix of code, design, and the everyday tools that keep things shipping.
+            Analytics, BI tools and the supporting tech I use to turn data into insights.
           </p>
         </motion.div>
 
@@ -747,11 +755,42 @@ function SkillCard({
             className="pointer-events-none absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2"
           >
             <div className="glass rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-elevated)]">
-              <div className="text-sm font-semibold text-primary">{skill.name}</div>
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold text-primary">{skill.name}</div>
+                <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
+                  {skill.level}
+                </span>
+              </div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>
                 {skill.example}
+              </div>
+              {skill.projectsUsed.length > 0 && (
+                <div className="mt-3">
+                  <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Used in
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {skill.projectsUsed.map((p) => (
+                      <span key={p} className="rounded-full border border-border bg-surface/60 px-2 py-0.5 text-[10px] text-muted-foreground">
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div className="mt-3">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  Applications
+                </div>
+                <div className="mt-1 flex flex-wrap gap-1">
+                  {skill.applications.map((a) => (
+                    <span key={a} className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] text-primary">
+                      {a}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -769,12 +808,12 @@ function Projects({ onSelect }: { onSelect: (p: Project) => void }) {
     <section id="projects" className="relative bg-surface/40 py-28">
       <div className="mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
-          <div className="font-mono text-sm text-primary">— Selected work</div>
+          <div className="font-mono text-sm text-primary">— Selected analytics work</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Latest <span className="text-gradient">Projects</span>
+            Data <span className="text-gradient">Projects</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            School projects, prototypes, and personal experiments. Hover for the story.
+            Dashboards, analyses and data projects. Hover for the insight, click for the full case.
           </p>
         </motion.div>
 
@@ -819,10 +858,13 @@ function ProjectCard({
         </div>
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/70 to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <p className="line-clamp-3 text-xs text-muted-foreground">{project.description}</p>
-          <div className="mt-3 inline-flex items-center text-sm font-semibold text-primary">
-            View details <ArrowRight className="ml-1 h-3.5 w-3.5" />
+        <div className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-background/95 via-background/80 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">Objective</div>
+          <p className="mt-0.5 line-clamp-2 text-xs text-foreground">{project.objective}</p>
+          <div className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-primary">Key Insight</div>
+          <p className="line-clamp-2 text-xs text-muted-foreground">{project.insights[0]}</p>
+          <div className="mt-2 inline-flex items-center text-xs font-semibold text-primary">
+            View full case <ArrowRight className="ml-1 h-3 w-3" />
           </div>
         </div>
       </div>
@@ -888,13 +930,15 @@ function ProjectModal({
                 <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
                 <DialogDescription>{project.description}</DialogDescription>
               </DialogHeader>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <ProjectField label="Objective" value={project.objective} />
+                <ProjectField label="Dataset Type" value={project.dataset} />
                 <ProjectField label="My Role" value={project.role} />
                 <ProjectField label="Year" value={project.year} />
               </div>
               <div className="mt-4">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Technologies
+                  Tools Used
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t) => (
@@ -906,16 +950,22 @@ function ProjectModal({
               </div>
               <div className="mt-4">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Key Features
+                  Key Insights
                 </div>
                 <ul className="space-y-1.5 text-sm text-muted-foreground">
-                  {project.features.map((f) => (
+                  {project.insights.map((f) => (
                     <li key={f} className="flex gap-2">
-                      <span className="text-primary">✓</span>
+                      <span className="text-primary">▸</span>
                       {f}
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-4">
+                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Outcome
+                </div>
+                <p className="text-sm text-muted-foreground">{project.outcome}</p>
               </div>
             </div>
           </>
@@ -931,6 +981,85 @@ function ProjectField({ label, value }: { label: string; value: string }) {
     <div className="rounded-xl border border-border bg-surface/60 p-3">
       <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
       <div className="font-medium">{value}</div>
+    </div>
+  );
+}
+
+/* ---------------- JOURNEY ---------------- */
+
+const JOURNEY: { year: string; title: string; body: string; Icon: React.ComponentType<{ className?: string }> }[] = [
+  { year: "2023", title: "Excel & Data Organization", body: "Started learning Excel — formulas, pivot tables and structuring messy data into something useful.", Icon: BarChart3 },
+  { year: "2024", title: "SQL & Database Fundamentals", body: "Picked up SQL and relational basics: SELECT, JOINs, GROUP BY and schema design.", Icon: Database },
+  { year: "2025", title: "Web Systems & DB Projects", body: "Built systems backed by MySQL and explored reporting flows end-to-end.", Icon: LineChart },
+  { year: "2026", title: "Power BI, Python & Visualization", body: "Learning Power BI, Python (Pandas) and data visualization storytelling.", Icon: PieChart },
+  { year: "Future", title: "Professional Data Analyst", body: "Become a professional Data Analyst contributing to data-driven decision making.", Icon: TrendingUp },
+];
+
+function Journey() {
+  return (
+    <section id="journey" className="relative bg-surface/40 py-28">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="relative mx-auto max-w-6xl px-4">
+        <motion.div {...fadeUp()} className="text-center">
+          <div className="font-mono text-sm text-primary">— My path</div>
+          <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
+            Data Analytics <span className="text-gradient">Journey</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            From spreadsheets to dashboards — the steps I'm taking toward becoming a Data Analyst.
+          </p>
+        </motion.div>
+
+        <div className="relative mx-auto mt-16 max-w-3xl">
+          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent md:left-1/2 md:-translate-x-1/2" />
+          <div className="space-y-10">
+            {JOURNEY.map((item, i) => {
+              const left = i % 2 === 0;
+              return (
+                <motion.div
+                  key={item.year}
+                  {...fadeUp(i * 0.05)}
+                  className="relative grid gap-4 md:grid-cols-2 md:items-center"
+                >
+                  <div className={`pl-12 md:pl-0 ${left ? "md:pr-10 md:text-right" : "md:order-2 md:pl-10"}`}>
+                    <div className="glass inline-block rounded-2xl border border-primary/25 p-5 text-left shadow-[var(--shadow-card)]">
+                      <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{item.year}</div>
+                      <div className="mt-1 font-display text-lg font-semibold">{item.title}</div>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block" />
+                  <div className="absolute left-4 top-3 -translate-x-1/2 md:left-1/2">
+                    <div className="grid h-9 w-9 place-items-center rounded-full border-2 border-primary bg-background text-primary shadow-[var(--shadow-glow)]">
+                      <item.Icon className="h-4 w-4" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Stats counters */}
+        <motion.div {...fadeUp(0.1)} className="mt-20 grid gap-4 sm:grid-cols-4">
+          <CounterCard value="6+" label="Data Projects" Icon={BarChart3} />
+          <CounterCard value="5+" label="Tools Mastered" Icon={Database} />
+          <CounterCard value="3+" label="Years Learning" Icon={LineChart} />
+          <CounterCard value="100%" label="Data-Driven" Icon={TrendingUp} />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function CounterCard({ value, label, Icon }: { value: string; label: string; Icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <div className="glass rounded-2xl border border-primary/20 p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
+      <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full bg-primary/15 text-primary">
+        <Icon className="h-5 w-5" />
+      </div>
+      <div className="font-display text-3xl font-bold text-gradient">{value}</div>
+      <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
     </div>
   );
 }
@@ -967,10 +1096,11 @@ function Contact() {
         <motion.div {...fadeUp()} className="text-center">
           <div className="font-mono text-sm text-primary">— Let's talk</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Contact <span className="text-gradient">Me</span>
+            Let's Work With <span className="text-gradient">Data Together</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Open to collaborations, feedback, and opportunities to grow.
+            I'm always interested in opportunities involving data analytics, reporting, business
+            intelligence, and data-driven decision making.
           </p>
         </motion.div>
 
@@ -1106,7 +1236,7 @@ function Footer() {
         <div>
           © {new Date().getFullYear()} Khurt Pingoy. Crafted with care.
         </div>
-        <div className="font-mono text-xs">Built with HTML in spirit, React in practice.</div>
+        <div className="font-mono text-xs">Turning data into decisions.</div>
       </div>
     </footer>
   );
