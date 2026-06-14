@@ -443,6 +443,25 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll-down indicator */}
+      <motion.button
+        onClick={() => scrollToId("about")}
+        aria-label="Scroll down"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-primary md:flex"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em]">Scroll</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="grid h-9 w-9 place-items-center rounded-full border border-primary/40 bg-primary/5"
+        >
+          <ChevronDown className="h-4 w-4 text-primary" />
+        </motion.span>
+      </motion.button>
     </section>
   );
 }
