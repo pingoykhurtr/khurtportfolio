@@ -18,10 +18,18 @@ import {
   Loader2,
   MapPin,
   Phone,
+  ChevronDown,
+  GraduationCap,
+  Target,
+  Heart,
+  Code2,
+  Smile,
+  User,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
-import profileAsset from "@/assets/profile.jpg.asset.json";
+import formalAsset from "@/assets/formal.png.asset.json";
+import shyAsset from "@/assets/shy.png.asset.json";
 import aboutAsset from "@/assets/about.jpg.asset.json";
 import { skillCategories, projects, type Project, type Skill } from "@/lib/portfolio-data";
 import {
