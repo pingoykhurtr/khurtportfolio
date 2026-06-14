@@ -927,13 +927,15 @@ function ProjectModal({
                 <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
                 <DialogDescription>{project.description}</DialogDescription>
               </DialogHeader>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <ProjectField label="Objective" value={project.objective} />
+                <ProjectField label="Dataset Type" value={project.dataset} />
                 <ProjectField label="My Role" value={project.role} />
                 <ProjectField label="Year" value={project.year} />
               </div>
               <div className="mt-4">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Technologies
+                  Tools Used
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((t) => (
@@ -945,16 +947,22 @@ function ProjectModal({
               </div>
               <div className="mt-4">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Key Features
+                  Key Insights
                 </div>
                 <ul className="space-y-1.5 text-sm text-muted-foreground">
-                  {project.features.map((f) => (
+                  {project.insights.map((f) => (
                     <li key={f} className="flex gap-2">
-                      <span className="text-primary">✓</span>
+                      <span className="text-primary">▸</span>
                       {f}
                     </li>
                   ))}
                 </ul>
+              </div>
+              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-4">
+                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                  Outcome
+                </div>
+                <p className="text-sm text-muted-foreground">{project.outcome}</p>
               </div>
             </div>
           </>
