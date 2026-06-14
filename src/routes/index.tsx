@@ -808,7 +808,7 @@ function Projects({ onSelect }: { onSelect: (p: Project) => void }) {
     <section id="projects" className="relative bg-surface/40 py-28">
       <div className="mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
-          <div className="font-mono text-sm text-primary">— Selected work</div>
+          <div className="font-mono text-sm text-primary">— Selected analytics work</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
             Data <span className="text-gradient">Projects</span>
           </h2>
