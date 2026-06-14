@@ -985,6 +985,85 @@ function ProjectField({ label, value }: { label: string; value: string }) {
   );
 }
 
+/* ---------------- JOURNEY ---------------- */
+
+const JOURNEY: { year: string; title: string; body: string; Icon: React.ComponentType<{ className?: string }> }[] = [
+  { year: "2023", title: "Excel & Data Organization", body: "Started learning Excel — formulas, pivot tables and structuring messy data into something useful.", Icon: BarChart3 },
+  { year: "2024", title: "SQL & Database Fundamentals", body: "Picked up SQL and relational basics: SELECT, JOINs, GROUP BY and schema design.", Icon: Database },
+  { year: "2025", title: "Web Systems & DB Projects", body: "Built systems backed by MySQL and explored reporting flows end-to-end.", Icon: LineChart },
+  { year: "2026", title: "Power BI, Python & Visualization", body: "Learning Power BI, Python (Pandas) and data visualization storytelling.", Icon: PieChart },
+  { year: "Future", title: "Professional Data Analyst", body: "Become a professional Data Analyst contributing to data-driven decision making.", Icon: TrendingUp },
+];
+
+function Journey() {
+  return (
+    <section id="journey" className="relative bg-surface/40 py-28">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="relative mx-auto max-w-6xl px-4">
+        <motion.div {...fadeUp()} className="text-center">
+          <div className="font-mono text-sm text-primary">— My path</div>
+          <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
+            Data Analytics <span className="text-gradient">Journey</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            From spreadsheets to dashboards — the steps I'm taking toward becoming a Data Analyst.
+          </p>
+        </motion.div>
+
+        <div className="relative mx-auto mt-16 max-w-3xl">
+          <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-primary/60 via-primary/30 to-transparent md:left-1/2 md:-translate-x-1/2" />
+          <div className="space-y-10">
+            {JOURNEY.map((item, i) => {
+              const left = i % 2 === 0;
+              return (
+                <motion.div
+                  key={item.year}
+                  {...fadeUp(i * 0.05)}
+                  className="relative grid gap-4 md:grid-cols-2 md:items-center"
+                >
+                  <div className={`pl-12 md:pl-0 ${left ? "md:pr-10 md:text-right" : "md:order-2 md:pl-10"}`}>
+                    <div className="glass inline-block rounded-2xl border border-primary/25 p-5 text-left shadow-[var(--shadow-card)]">
+                      <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary">{item.year}</div>
+                      <div className="mt-1 font-display text-lg font-semibold">{item.title}</div>
+                      <p className="mt-2 text-sm text-muted-foreground">{item.body}</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block" />
+                  <div className="absolute left-4 top-3 -translate-x-1/2 md:left-1/2">
+                    <div className="grid h-9 w-9 place-items-center rounded-full border-2 border-primary bg-background text-primary shadow-[var(--shadow-glow)]">
+                      <item.Icon className="h-4 w-4" />
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Stats counters */}
+        <motion.div {...fadeUp(0.1)} className="mt-20 grid gap-4 sm:grid-cols-4">
+          <CounterCard value="6+" label="Data Projects" Icon={BarChart3} />
+          <CounterCard value="5+" label="Tools Mastered" Icon={Database} />
+          <CounterCard value="3+" label="Years Learning" Icon={LineChart} />
+          <CounterCard value="100%" label="Data-Driven" Icon={TrendingUp} />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function CounterCard({ value, label, Icon }: { value: string; label: string; Icon: React.ComponentType<{ className?: string }> }) {
+  return (
+    <div className="glass rounded-2xl border border-primary/20 p-5 text-center transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-[var(--shadow-glow)]">
+      <div className="mx-auto mb-2 grid h-10 w-10 place-items-center rounded-full bg-primary/15 text-primary">
+        <Icon className="h-5 w-5" />
+      </div>
+      <div className="font-display text-3xl font-bold text-gradient">{value}</div>
+      <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
+    </div>
+  );
+}
+
 /* ---------------- CONTACT ---------------- */
 
 function Contact() {
