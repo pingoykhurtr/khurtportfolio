@@ -579,29 +579,29 @@ function AboutModal({
               <AboutBlock
                 Icon={User}
                 title="Personal Intro"
-                body="Khurt Rocaberte Pingoy — a curious, design-minded Information Systems student based in the Philippines who likes turning ideas into clean, working interfaces."
+                body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
               />
               <AboutBlock
                 Icon={GraduationCap}
                 title="Education"
                 body={
-                  "• BS Information Systems — 4th Year\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+                  "• 4th Year Student — Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
                 }
               />
               <AboutBlock
                 Icon={Code2}
                 title="Skills"
-                body="Java, HTML, CSS, JavaScript, MySQL, plus Figma & Canva for UI/UX. Learning React and Node along the way."
+                body="Excel, SQL, Python (Pandas), Power BI, Tableau and MySQL. Supported by HTML, CSS, JavaScript and Java."
               />
               <AboutBlock
                 Icon={Heart}
                 title="Interests"
-                body="Web development, mobile UI design, productivity tools, and exploring new frameworks through small side projects."
+                body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
               />
               <AboutBlock
                 Icon={Target}
                 title="Career Goals"
-                body="Grow into a well-rounded full-stack developer and UI/UX designer — shipping reliable software that actually helps people."
+                body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions."
               />
               <AboutBlock
                 Icon={Smile}
