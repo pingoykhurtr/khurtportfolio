@@ -47,16 +47,16 @@ import { Badge } from "@/components/ui/badge";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Khurt Pingoy — Information Systems Portfolio" },
+      { title: "Khurt Pingoy — Aspiring Data Analyst Portfolio" },
       {
         name: "description",
         content:
-          "4th year BS Information Systems student. Java, web development, and UI/UX design projects by Khurt Pingoy.",
+          "4th year student and aspiring Data Analyst. Dashboards, SQL, Python and BI projects by Khurt Pingoy.",
       },
-      { property: "og:title", content: "Khurt Pingoy — Portfolio" },
+      { property: "og:title", content: "Khurt Pingoy — Data Analyst Portfolio" },
       {
         property: "og:description",
-        content: "Information Systems student building Java apps, websites, and UI/UX prototypes.",
+        content: "Aspiring Data Analyst turning raw data into insights through dashboards and reports.",
       },
     ],
   }),
