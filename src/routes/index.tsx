@@ -316,13 +316,28 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden bg-hero-glow pt-28"
     >
-      {/* Background blobs */}
+      {/* Background blobs + particles */}
       <div className="pointer-events-none absolute inset-0">
         <div className="animate-blob absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
         <div
           className="animate-blob absolute bottom-0 right-10 h-80 w-80 rounded-full bg-primary-glow/15 blur-3xl"
           style={{ animationDelay: "4s" }}
         />
+        {Array.from({ length: 18 }).map((_, i) => (
+          <span
+            key={i}
+            className="animate-float absolute block rounded-full bg-primary/40"
+            style={{
+              width: `${4 + (i % 5)}px`,
+              height: `${4 + (i % 5)}px`,
+              top: `${(i * 53) % 100}%`,
+              left: `${(i * 37) % 100}%`,
+              animationDelay: `${(i % 6) * 0.7}s`,
+              animationDuration: `${6 + (i % 5)}s`,
+              opacity: 0.35,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:items-center">
