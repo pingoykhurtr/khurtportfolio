@@ -755,11 +755,42 @@ function SkillCard({
             className="pointer-events-none absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2"
           >
             <div className="glass rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-elevated)]">
-              <div className="text-sm font-semibold text-primary">{skill.name}</div>
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold text-primary">{skill.name}</div>
+                <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
+                  {skill.level}
+                </span>
+              </div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>
                 {skill.example}
+              </div>
+              {skill.projectsUsed.length > 0 && (
+                <div className="mt-3">
+                  <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Used in
+                  </div>
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {skill.projectsUsed.map((p) => (
+                      <span key={p} className="rounded-full border border-border bg-surface/60 px-2 py-0.5 text-[10px] text-muted-foreground">
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div className="mt-3">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  Applications
+                </div>
+                <div className="mt-1 flex flex-wrap gap-1">
+                  {skill.applications.map((a) => (
+                    <span key={a} className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] text-primary">
+                      {a}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
