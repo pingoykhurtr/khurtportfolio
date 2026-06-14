@@ -25,6 +25,11 @@ import {
   Code2,
   Smile,
   User,
+  BarChart3,
+  Database,
+  LineChart,
+  PieChart,
+  TrendingUp,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
