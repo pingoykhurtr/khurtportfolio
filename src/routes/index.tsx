@@ -1236,7 +1236,7 @@ function Footer() {
         <div>
           © {new Date().getFullYear()} Khurt Pingoy. Crafted with care.
         </div>
-        <div className="font-mono text-xs">Built with HTML in spirit, React in practice.</div>
+        <div className="font-mono text-xs">Turning data into decisions.</div>
       </div>
     </footer>
   );
