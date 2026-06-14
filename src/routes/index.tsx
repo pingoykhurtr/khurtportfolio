@@ -551,50 +551,83 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto border-primary/20 bg-card">
-        <DialogHeader>
-          <DialogTitle className="font-display text-3xl">
-            More about <span className="text-gradient">Khurt</span>
-          </DialogTitle>
-          <DialogDescription>The deeper version of the bio.</DialogDescription>
-        </DialogHeader>
-        <div className="mt-4 space-y-5 text-sm">
-          <AboutBlock title="Full Name" body="Khurt Rocaberte Pingoy" />
-          <AboutBlock
-            title="Education"
-            body={
-              "• 4th Year — BS in Information Systems (Post-Secondary)\n" +
-              "• Secondary Education — F. Bustamante NHS\n" +
-              "• Primary Education — Sixto Babao Elementary School"
-            }
-          />
-          <AboutBlock
-            title="Goals"
-            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software development and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
-          />
-          <AboutBlock
-            title="Interests"
-            body="Web development, mobile UI design, productivity tools, and learning new languages/frameworks through small side projects."
-          />
-          <AboutBlock
-            title="Programming Journey"
-            body="Started with HTML & CSS for school projects, fell in love with the logic side through Java, and now I'm expanding into JavaScript, React, and Node."
-          />
-        </div>
+      <DialogContent className="max-h-[92vh] w-[min(96vw,1000px)] max-w-[1000px] overflow-hidden border-2 border-primary/40 bg-[#0e1116] p-0 text-foreground shadow-[0_30px_90px_-20px_rgba(106,154,68,0.45)] sm:rounded-2xl">
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,154,68,0.18),transparent_60%)]" />
+          <div className="relative px-6 pb-5 pt-6 sm:px-8">
+            <DialogHeader className="text-left">
+              <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+                — Full bio
+              </div>
+              <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
+                More about <span className="text-gradient">Khurt Pingoy</span>
+              </DialogTitle>
+              <DialogDescription className="text-muted-foreground">
+                A quick window into who I am, what I study, and where I'm headed.
+              </DialogDescription>
+            </DialogHeader>
 
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <AboutBlock
+                Icon={User}
+                title="Personal Intro"
+                body="Khurt Rocaberte Pingoy — a curious, design-minded Information Systems student based in the Philippines who likes turning ideas into clean, working interfaces."
+              />
+              <AboutBlock
+                Icon={GraduationCap}
+                title="Education"
+                body={
+                  "• BS Information Systems — 4th Year\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+                }
+              />
+              <AboutBlock
+                Icon={Code2}
+                title="Skills"
+                body="Java, HTML, CSS, JavaScript, MySQL, plus Figma & Canva for UI/UX. Learning React and Node along the way."
+              />
+              <AboutBlock
+                Icon={Heart}
+                title="Interests"
+                body="Web development, mobile UI design, productivity tools, and exploring new frameworks through small side projects."
+              />
+              <AboutBlock
+                Icon={Target}
+                title="Career Goals"
+                body="Grow into a well-rounded full-stack developer and UI/UX designer — shipping reliable software that actually helps people."
+              />
+              <AboutBlock
+                Icon={Smile}
+                title="Fun Facts"
+                body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and rebuilding the same Figma component until it feels right."
+              />
+            </div>
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );
 }
 
-function AboutBlock({ title, body }: { title: string; body: string }) {
+function AboutBlock({
+  Icon,
+  title,
+  body,
+}: {
+  Icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  body: string;
+}) {
   return (
-    <div className="rounded-xl border border-border bg-surface/60 p-4">
-      <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
-        {title}
+    <div className="rounded-xl border border-primary/25 bg-[#141a20]/80 p-4 transition-colors hover:border-primary/60">
+      <div className="mb-2 flex items-center gap-2">
+        <span className="grid h-7 w-7 place-items-center rounded-md bg-primary/15 text-primary">
+          <Icon className="h-3.5 w-3.5" />
+        </span>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+          {title}
+        </div>
       </div>
-      <p className="whitespace-pre-line text-muted-foreground">{body}</p>
-
+      <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground">{body}</p>
     </div>
   );
 }
