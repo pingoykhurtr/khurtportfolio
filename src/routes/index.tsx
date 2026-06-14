@@ -498,24 +498,23 @@ function About({ onOpen }: { onOpen: () => void }) {
         <motion.div {...fadeUp(0.15)}>
           <div className="font-mono text-sm text-primary">— About me</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Curious learner, <span className="text-gradient">future IS professional</span>
+            Turning data into <span className="text-gradient">decisions</span>
           </h2>
           <p className="mt-6 text-muted-foreground">
-            I'm a BS Information Systems student, still figuring out what I want to become — but
-            right now I'm focused on the fundamentals of software development and design. I
-            practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my
-            coding foundation.
+            I am currently developing my skills in data analysis, data visualization, database
+            management, and business reporting. I enjoy exploring datasets, identifying trends,
+            and converting information into actionable insights.
           </p>
           <p className="mt-4 text-muted-foreground">
-            Each small step matters. Every project, course, and late-night debug session brings me
-            closer to the path that fits me best.
+            My long-term goal is to become a professional Data Analyst and contribute to
+            data-driven decision making — bridging business questions and the numbers behind them.
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
             <Info label="Name" value="Khurt Pingoy" />
-            <Info label="Course" value="BS Information Systems" />
+            <Info label="Role" value="Aspiring Data Analyst" />
             <Info label="Email" value="pingoykhurtr@gmail.com" />
-            <Info label="Status" value="Open to projects" />
+            <Info label="Status" value="Open to data roles" />
           </div>
 
 
