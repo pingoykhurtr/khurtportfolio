@@ -18,10 +18,18 @@ import {
   Loader2,
   MapPin,
   Phone,
+  ChevronDown,
+  GraduationCap,
+  Target,
+  Heart,
+  Code2,
+  Smile,
+  User,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
-import profileAsset from "@/assets/profile.jpg.asset.json";
+import formalAsset from "@/assets/formal.png.asset.json";
+import shyAsset from "@/assets/shy.png.asset.json";
 import aboutAsset from "@/assets/about.jpg.asset.json";
 import { skillCategories, projects, type Project, type Skill } from "@/lib/portfolio-data";
 import {
@@ -172,8 +180,18 @@ function Nav({
   setNavOpen: (v: boolean) => void;
 }) {
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const y = window.scrollY + 120;
+      let current = "home";
+      for (const l of NAV_LINKS) {
+        const el = document.getElementById(l.id);
+        if (el && el.offsetTop <= y) current = l.id;
+      }
+      setActive(current);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -182,15 +200,13 @@ function Nav({
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-3" : "py-5"
+        scrolled
+          ? "border-b border-primary/10 bg-[rgba(17,19,23,0.85)] py-3 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent py-5"
       }`}
     >
       <div className="mx-auto max-w-6xl px-4">
-        <div
-          className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 ${
-            scrolled ? "glass shadow-lg" : "bg-transparent"
-          }`}
-        >
+        <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToId("home")}
             className="font-display text-xl font-bold tracking-tight"
@@ -199,22 +215,32 @@ function Nav({
           </button>
 
           <nav className="hidden items-center gap-1 md:flex">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => scrollToId(l.id)}
-                className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {l.label}
-              </button>
-            ))}
+            {NAV_LINKS.map((l) => {
+              const isActive = active === l.id;
+              return (
+                <button
+                  key={l.id}
+                  onClick={() => scrollToId(l.id)}
+                  className={`group relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-left rounded-full bg-primary transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
             <button
               onClick={toggle}
               aria-label="Toggle theme"
-              className="relative grid h-10 w-10 place-items-center rounded-full border border-border bg-surface text-foreground transition-all hover:border-primary hover:text-primary"
+              className="relative grid h-10 w-10 place-items-center rounded-full border border-border bg-surface/80 text-foreground transition-all hover:border-primary hover:text-primary"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {theme === "dark" ? (
@@ -242,7 +268,7 @@ function Nav({
             </button>
 
             <button
-              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface md:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-surface/80 md:hidden"
               onClick={() => setNavOpen(!navOpen)}
               aria-label="Menu"
             >
@@ -258,7 +284,7 @@ function Nav({
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="glass mt-2 overflow-hidden rounded-2xl p-2 md:hidden"
+              className="glass mt-3 overflow-hidden rounded-2xl p-2 md:hidden"
             >
               {NAV_LINKS.map((l) => (
                 <button
@@ -267,7 +293,9 @@ function Nav({
                     scrollToId(l.id);
                     setNavOpen(false);
                   }}
-                  className="block w-full rounded-xl px-4 py-3 text-left text-sm font-medium hover:bg-accent"
+                  className={`block w-full rounded-xl px-4 py-3 text-left text-sm font-medium hover:bg-accent ${
+                    active === l.id ? "text-primary" : ""
+                  }`}
                 >
                   {l.label}
                 </button>
@@ -288,13 +316,28 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
       id="home"
       className="relative flex min-h-screen items-center overflow-hidden bg-hero-glow pt-28"
     >
-      {/* Background blobs */}
+      {/* Background blobs + particles */}
       <div className="pointer-events-none absolute inset-0">
         <div className="animate-blob absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
         <div
           className="animate-blob absolute bottom-0 right-10 h-80 w-80 rounded-full bg-primary-glow/15 blur-3xl"
           style={{ animationDelay: "4s" }}
         />
+        {Array.from({ length: 18 }).map((_, i) => (
+          <span
+            key={i}
+            className="animate-float absolute block rounded-full bg-primary/40"
+            style={{
+              width: `${4 + (i % 5)}px`,
+              height: `${4 + (i % 5)}px`,
+              top: `${(i * 53) % 100}%`,
+              left: `${(i * 37) % 100}%`,
+              animationDelay: `${(i % 6) * 0.7}s`,
+              animationDuration: `${6 + (i % 5)}s`,
+              opacity: 0.35,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:items-center">
@@ -370,17 +413,24 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
 
         <motion.div
           {...fadeUp(0.15)}
-          className="relative mx-auto flex items-center justify-center"
+          className="group/profile relative mx-auto flex items-center justify-center"
         >
           <div className="absolute inset-8 rounded-full bg-gradient-to-br from-primary/40 to-primary-glow/20 blur-3xl" />
           <div className="animate-float relative">
-            <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-primary to-primary-glow opacity-70 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border-2 border-primary/60 shadow-[var(--shadow-glow)] transition-transform duration-500 hover:scale-105">
-              <img
-                src={profileAsset.url}
-                alt="Khurt Pingoy"
-                className="h-[420px] w-[340px] object-cover sm:h-[480px] sm:w-[380px]"
-              />
+            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary to-primary-glow opacity-70 blur-2xl transition-opacity duration-500 group-hover/profile:opacity-100" />
+            <div className="relative overflow-hidden rounded-[2rem] border-2 border-primary/60 shadow-[var(--shadow-glow)] transition-transform duration-500 group-hover/profile:scale-[1.04]">
+              <div className="relative h-[420px] w-[340px] sm:h-[480px] sm:w-[380px]">
+                <img
+                  src={formalAsset.url}
+                  alt="Khurt Pingoy"
+                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 group-hover/profile:opacity-0"
+                />
+                <img
+                  src={shyAsset.url}
+                  alt="Khurt Pingoy — shy"
+                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover/profile:opacity-100"
+                />
+              </div>
             </div>
             <div className="glass absolute -bottom-4 -left-6 rounded-2xl px-4 py-3 text-sm shadow-lg">
               <div className="font-mono text-xs text-muted-foreground">Currently</div>
@@ -390,10 +440,28 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
               <div className="font-mono text-xs text-muted-foreground">Focus</div>
               <div className="font-semibold text-primary">Info Systems</div>
             </div>
-
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll-down indicator */}
+      <motion.button
+        onClick={() => scrollToId("about")}
+        aria-label="Scroll down"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-primary md:flex"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em]">Scroll</span>
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="grid h-9 w-9 place-items-center rounded-full border border-primary/40 bg-primary/5"
+        >
+          <ChevronDown className="h-4 w-4 text-primary" />
+        </motion.span>
+      </motion.button>
     </section>
   );
 }
@@ -483,50 +551,83 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto border-primary/20 bg-card">
-        <DialogHeader>
-          <DialogTitle className="font-display text-3xl">
-            More about <span className="text-gradient">Khurt</span>
-          </DialogTitle>
-          <DialogDescription>The deeper version of the bio.</DialogDescription>
-        </DialogHeader>
-        <div className="mt-4 space-y-5 text-sm">
-          <AboutBlock title="Full Name" body="Khurt Rocaberte Pingoy" />
-          <AboutBlock
-            title="Education"
-            body={
-              "• 4th Year — BS in Information Systems (Post-Secondary)\n" +
-              "• Secondary Education — F. Bustamante NHS\n" +
-              "• Primary Education — Sixto Babao Elementary School"
-            }
-          />
-          <AboutBlock
-            title="Goals"
-            body="For now, I want to be better and I'm still willing to figure out what I want to become — but right now I'm focused on the fundamentals of software development and design. I practice in Figma for UI/UX work and study Java, HTML, CSS, and JavaScript to build my coding foundation."
-          />
-          <AboutBlock
-            title="Interests"
-            body="Web development, mobile UI design, productivity tools, and learning new languages/frameworks through small side projects."
-          />
-          <AboutBlock
-            title="Programming Journey"
-            body="Started with HTML & CSS for school projects, fell in love with the logic side through Java, and now I'm expanding into JavaScript, React, and Node."
-          />
-        </div>
+      <DialogContent className="max-h-[92vh] w-[min(96vw,1000px)] max-w-[1000px] overflow-hidden border-2 border-primary/40 bg-[#0e1116] p-0 text-foreground shadow-[0_30px_90px_-20px_rgba(106,154,68,0.45)] sm:rounded-2xl">
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,154,68,0.18),transparent_60%)]" />
+          <div className="relative px-6 pb-5 pt-6 sm:px-8">
+            <DialogHeader className="text-left">
+              <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+                — Full bio
+              </div>
+              <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
+                More about <span className="text-gradient">Khurt Pingoy</span>
+              </DialogTitle>
+              <DialogDescription className="text-muted-foreground">
+                A quick window into who I am, what I study, and where I'm headed.
+              </DialogDescription>
+            </DialogHeader>
 
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <AboutBlock
+                Icon={User}
+                title="Personal Intro"
+                body="Khurt Rocaberte Pingoy — a curious, design-minded Information Systems student based in the Philippines who likes turning ideas into clean, working interfaces."
+              />
+              <AboutBlock
+                Icon={GraduationCap}
+                title="Education"
+                body={
+                  "• BS Information Systems — 4th Year\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+                }
+              />
+              <AboutBlock
+                Icon={Code2}
+                title="Skills"
+                body="Java, HTML, CSS, JavaScript, MySQL, plus Figma & Canva for UI/UX. Learning React and Node along the way."
+              />
+              <AboutBlock
+                Icon={Heart}
+                title="Interests"
+                body="Web development, mobile UI design, productivity tools, and exploring new frameworks through small side projects."
+              />
+              <AboutBlock
+                Icon={Target}
+                title="Career Goals"
+                body="Grow into a well-rounded full-stack developer and UI/UX designer — shipping reliable software that actually helps people."
+              />
+              <AboutBlock
+                Icon={Smile}
+                title="Fun Facts"
+                body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and rebuilding the same Figma component until it feels right."
+              />
+            </div>
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );
 }
 
-function AboutBlock({ title, body }: { title: string; body: string }) {
+function AboutBlock({
+  Icon,
+  title,
+  body,
+}: {
+  Icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  body: string;
+}) {
   return (
-    <div className="rounded-xl border border-border bg-surface/60 p-4">
-      <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
-        {title}
+    <div className="rounded-xl border border-primary/25 bg-[#141a20]/80 p-4 transition-colors hover:border-primary/60">
+      <div className="mb-2 flex items-center gap-2">
+        <span className="grid h-7 w-7 place-items-center rounded-md bg-primary/15 text-primary">
+          <Icon className="h-3.5 w-3.5" />
+        </span>
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+          {title}
+        </div>
       </div>
-      <p className="whitespace-pre-line text-muted-foreground">{body}</p>
-
+      <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground">{body}</p>
     </div>
   );
 }
