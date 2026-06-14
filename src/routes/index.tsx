@@ -447,7 +447,7 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             </div>
             <div className="glass absolute -right-6 top-10 rounded-2xl px-4 py-3 text-sm shadow-lg">
               <div className="font-mono text-xs text-muted-foreground">Focus</div>
-              <div className="font-semibold text-primary">Info Systems</div>
+              <div className="font-semibold text-primary">Data Analytics</div>
             </div>
           </div>
         </motion.div>
