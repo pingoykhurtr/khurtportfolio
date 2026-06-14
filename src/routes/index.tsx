@@ -668,7 +668,7 @@ function Skills() {
             My <span className="text-gradient">Skills</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            A mix of code, design, and the everyday tools that keep things shipping.
+            Analytics, BI tools and the supporting tech I use to turn data into insights.
           </p>
         </motion.div>
 
