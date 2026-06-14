@@ -1096,10 +1096,11 @@ function Contact() {
         <motion.div {...fadeUp()} className="text-center">
           <div className="font-mono text-sm text-primary">— Let's talk</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Contact <span className="text-gradient">Me</span>
+            Let's Work With <span className="text-gradient">Data Together</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Open to collaborations, feedback, and opportunities to grow.
+            I'm always interested in opportunities involving data analytics, reporting, business
+            intelligence, and data-driven decision making.
           </p>
         </motion.div>
 
