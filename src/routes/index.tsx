@@ -490,7 +490,7 @@ function About({ onOpen }: { onOpen: () => void }) {
             <div className="grid grid-cols-3 gap-3 text-center">
               <Stat label="Projects" value="6+" />
               <Stat label="Year" value="4th" />
-              <Stat label="Skills" value="13+" />
+              <Stat label="Tools" value="11+" />
             </div>
           </div>
         </motion.div>
