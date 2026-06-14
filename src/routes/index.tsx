@@ -398,17 +398,24 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
 
         <motion.div
           {...fadeUp(0.15)}
-          className="relative mx-auto flex items-center justify-center"
+          className="group/profile relative mx-auto flex items-center justify-center"
         >
           <div className="absolute inset-8 rounded-full bg-gradient-to-br from-primary/40 to-primary-glow/20 blur-3xl" />
           <div className="animate-float relative">
-            <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-primary to-primary-glow opacity-70 blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border-2 border-primary/60 shadow-[var(--shadow-glow)] transition-transform duration-500 hover:scale-105">
-              <img
-                src={profileAsset.url}
-                alt="Khurt Pingoy"
-                className="h-[420px] w-[340px] object-cover sm:h-[480px] sm:w-[380px]"
-              />
+            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-primary to-primary-glow opacity-70 blur-2xl transition-opacity duration-500 group-hover/profile:opacity-100" />
+            <div className="relative overflow-hidden rounded-[2rem] border-2 border-primary/60 shadow-[var(--shadow-glow)] transition-transform duration-500 group-hover/profile:scale-[1.04]">
+              <div className="relative h-[420px] w-[340px] sm:h-[480px] sm:w-[380px]">
+                <img
+                  src={formalAsset.url}
+                  alt="Khurt Pingoy"
+                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 group-hover/profile:opacity-0"
+                />
+                <img
+                  src={shyAsset.url}
+                  alt="Khurt Pingoy — shy"
+                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover/profile:opacity-100"
+                />
+              </div>
             </div>
             <div className="glass absolute -bottom-4 -left-6 rounded-2xl px-4 py-3 text-sm shadow-lg">
               <div className="font-mono text-xs text-muted-foreground">Currently</div>
@@ -418,7 +425,6 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
               <div className="font-mono text-xs text-muted-foreground">Focus</div>
               <div className="font-semibold text-primary">Info Systems</div>
             </div>
-
           </div>
         </motion.div>
       </div>
