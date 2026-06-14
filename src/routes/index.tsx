@@ -361,13 +361,13 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
           <div className="mt-4 h-8 font-display text-xl text-muted-foreground sm:text-2xl">
             <TypeAnimation
               sequence={[
-                "Information Systems Student",
+                "Aspiring Data Analyst",
                 2000,
-                "Future Full Stack Developer",
+                "Data-Driven Problem Solver",
                 2000,
-                "UI/UX Enthusiast",
+                "Future Business Intelligence Specialist",
                 2000,
-                "Problem Solver",
+                "Analytics Enthusiast",
                 2000,
               ]}
               speed={50}
@@ -376,8 +376,9 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
             />
           </div>
           <p className="mt-6 max-w-md text-base text-muted-foreground">
-            4th year BS Information Systems student building Java apps, responsive websites, and
-            UI/UX prototypes — still exploring, always learning.
+            I am a 4th-year student passionate about transforming raw data into meaningful
+            insights. My goal is to become a Data Analyst who helps organizations make informed
+            decisions through data visualization, reporting, and analytical thinking.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
