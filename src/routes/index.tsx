@@ -158,6 +158,8 @@ function PortfolioPage() {
 
       <Projects onSelect={setActiveProject} />
 
+      <Journey />
+
       <Contact />
 
       <Footer />
