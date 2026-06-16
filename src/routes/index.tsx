@@ -895,77 +895,100 @@ function ProjectModal({
 }) {
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-h-[92vh] max-w-4xl overflow-y-auto border-primary/20 bg-card p-0">
+      <DialogContent className="w-[min(96vw,1100px)] max-w-[1100px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
         {project && (
-          <>
-            {/* Prominent close button */}
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              className="absolute right-3 top-3 z-50 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition hover:scale-110 hover:bg-primary hover:text-primary-foreground"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            <div className="relative w-full overflow-hidden rounded-t-lg bg-black">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="mx-auto block max-h-[60vh] w-full object-contain"
-              />
-              <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
+          <div className="grid gap-0 md:grid-cols-[1.05fr_1fr]">
+            {/* Left: Image */}
+            <div className="relative flex items-center justify-center bg-surface p-4 md:p-6">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="block max-h-[55vh] w-full object-contain"
+                />
+              </div>
+              <Badge className="absolute left-6 top-6 bg-background/90 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
-              <div className="absolute right-16 top-4 z-10 text-3xl drop-shadow-lg">
-                {project.emoji}
-              </div>
             </div>
 
-            <div className="px-6 pb-6 pt-4">
-              <DialogHeader>
-                <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
-                <DialogDescription>{project.description}</DialogDescription>
-              </DialogHeader>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <ProjectField label="Objective" value={project.objective} />
-                <ProjectField label="Dataset Type" value={project.dataset} />
-                <ProjectField label="My Role" value={project.role} />
-                <ProjectField label="Year" value={project.year} />
+            {/* Right: Info */}
+            <div className="relative flex flex-col gap-3 p-5 md:p-6">
+              <div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+                  {project.role} · {project.year}
+                </div>
+                <DialogTitle className="mt-1 font-display text-xl sm:text-2xl">
+                  {project.title}
+                </DialogTitle>
+                <DialogDescription className="mt-1.5 text-xs leading-relaxed">
+                  {project.description}
+                </DialogDescription>
               </div>
-              <div className="mt-4">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+
+              <div>
+                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   Tools Used
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (
-                    <Badge key={t} variant="outline" className="border-primary/40">
+                    <Badge
+                      key={t}
+                      variant="outline"
+                      className="border-border bg-surface text-[11px] text-foreground"
+                    >
                       {t}
                     </Badge>
                   ))}
                 </div>
               </div>
-              <div className="mt-4">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Key Insights
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div>
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Features
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    {project.features.slice(0, 4).map((f) => (
+                      <li key={f} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-1.5 text-sm text-muted-foreground">
-                  {project.insights.map((f) => (
-                    <li key={f} className="flex gap-2">
+                <div>
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Challenges
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    <li className="flex gap-1.5">
                       <span className="text-primary">▸</span>
-                      {f}
+                      <span>Cleaning messy {project.dataset.split("(")[0].trim().toLowerCase()}</span>
                     </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Outcome
+                    <li className="flex gap-1.5">
+                      <span className="text-primary">▸</span>
+                      <span>Choosing the right visuals for the story</span>
+                    </li>
+                    <li className="flex gap-1.5">
+                      <span className="text-primary">▸</span>
+                      <span>Translating numbers into clear insights</span>
+                    </li>
+                  </ul>
                 </div>
-                <p className="text-sm text-muted-foreground">{project.outcome}</p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  Learning Outcomes
+                </div>
+                <p className="text-[11.5px] leading-relaxed text-foreground/90">
+                  {project.outcome} Strengthened skills in {project.tech.slice(0, 2).join(" & ")} and
+                  data storytelling.
+                </p>
               </div>
             </div>
-          </>
+          </div>
         )}
       </DialogContent>
     </Dialog>
