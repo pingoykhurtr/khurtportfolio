@@ -623,12 +623,12 @@ function AboutBlock({
   body: string;
 }) {
   return (
-    <div className="rounded-xl border border-primary/25 bg-[#141a20]/80 p-4 transition-colors hover:border-primary/60">
+    <div className="rounded-xl border border-border bg-surface p-4 transition-colors hover:border-primary/60">
       <div className="mb-2 flex items-center gap-2">
         <span className="grid h-7 w-7 place-items-center rounded-md bg-primary/15 text-primary">
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-foreground">
           {title}
         </div>
       </div>
