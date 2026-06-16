@@ -209,7 +209,7 @@ function Nav({
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-primary/10 bg-[rgba(17,19,23,0.85)] py-3 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          ? "border-b border-border bg-background/85 py-3 shadow-[var(--shadow-card)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent py-5"
       }`}
     >
@@ -559,56 +559,53 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[92vh] w-[min(96vw,1000px)] max-w-[1000px] overflow-hidden border-2 border-primary/40 bg-[#0e1116] p-0 text-foreground shadow-[0_30px_90px_-20px_rgba(106,154,68,0.45)] sm:rounded-2xl">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,154,68,0.18),transparent_60%)]" />
-          <div className="relative px-6 pb-5 pt-6 sm:px-8">
-            <DialogHeader className="text-left">
-              <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
-                — Full bio
-              </div>
-              <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
-                More about <span className="text-gradient">Khurt Pingoy</span>
-              </DialogTitle>
-              <DialogDescription className="text-muted-foreground">
-                A quick window into who I am, what I study, and where I'm headed.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <AboutBlock
-                Icon={User}
-                title="Personal Intro"
-                body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
-              />
-              <AboutBlock
-                Icon={GraduationCap}
-                title="Education"
-                body={
-                  "• 4th Year Student — Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
-                }
-              />
-              <AboutBlock
-                Icon={Code2}
-                title="Skills"
-                body="Excel, SQL, Python (Pandas), Power BI, Tableau and MySQL. Supported by HTML, CSS, JavaScript and Java."
-              />
-              <AboutBlock
-                Icon={Heart}
-                title="Interests"
-                body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
-              />
-              <AboutBlock
-                Icon={Target}
-                title="Career Goals"
-                body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions."
-              />
-              <AboutBlock
-                Icon={Smile}
-                title="Fun Facts"
-                body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and rebuilding the same Figma component until it feels right."
-              />
+      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
+        <div className="relative px-6 pb-6 pt-6 sm:px-8">
+          <DialogHeader className="text-left">
+            <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+              — Full bio
             </div>
+            <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
+              More about <span className="text-gradient">Khurt Pingoy</span>
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              A quick window into who I am, what I study, and where I'm headed.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <AboutBlock
+              Icon={User}
+              title="Personal Profile"
+              body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
+            />
+            <AboutBlock
+              Icon={GraduationCap}
+              title="Education"
+              body={
+                "• 4th Year — BS Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+              }
+            />
+            <AboutBlock
+              Icon={Target}
+              title="Career Goal"
+              body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions through dashboards and reporting."
+            />
+            <AboutBlock
+              Icon={Code2}
+              title="Technical Skills"
+              body="Excel, SQL, Python (Pandas), Power BI, Tableau, MySQL. Supported by HTML, CSS, JavaScript and Java."
+            />
+            <AboutBlock
+              Icon={Heart}
+              title="Interests"
+              body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
+            />
+            <AboutBlock
+              Icon={Smile}
+              title="Beyond Work"
+              body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and refining Figma components until they feel right."
+            />
           </div>
         </div>
       </DialogContent>
@@ -626,12 +623,12 @@ function AboutBlock({
   body: string;
 }) {
   return (
-    <div className="rounded-xl border border-primary/25 bg-[#141a20]/80 p-4 transition-colors hover:border-primary/60">
+    <div className="rounded-xl border border-border bg-surface p-4 transition-colors hover:border-primary/60">
       <div className="mb-2 flex items-center gap-2">
         <span className="grid h-7 w-7 place-items-center rounded-md bg-primary/15 text-primary">
           <Icon className="h-3.5 w-3.5" />
         </span>
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-foreground">
           {title}
         </div>
       </div>
@@ -898,77 +895,100 @@ function ProjectModal({
 }) {
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-h-[92vh] max-w-4xl overflow-y-auto border-primary/20 bg-card p-0">
+      <DialogContent className="w-[min(96vw,1100px)] max-w-[1100px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
         {project && (
-          <>
-            {/* Prominent close button */}
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              className="absolute right-3 top-3 z-50 grid h-10 w-10 place-items-center rounded-full bg-background/90 text-foreground shadow-lg ring-1 ring-border backdrop-blur transition hover:scale-110 hover:bg-primary hover:text-primary-foreground"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            <div className="relative w-full overflow-hidden rounded-t-lg bg-black">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="mx-auto block max-h-[60vh] w-full object-contain"
-              />
-              <Badge className="absolute left-4 top-4 z-10 bg-background/80 text-foreground backdrop-blur">
+          <div className="grid gap-0 md:grid-cols-[1.05fr_1fr]">
+            {/* Left: Image */}
+            <div className="relative flex items-center justify-center bg-surface p-4 md:p-6">
+              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="block max-h-[55vh] w-full object-contain"
+                />
+              </div>
+              <Badge className="absolute left-6 top-6 bg-background/90 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
-              <div className="absolute right-16 top-4 z-10 text-3xl drop-shadow-lg">
-                {project.emoji}
-              </div>
             </div>
 
-            <div className="px-6 pb-6 pt-4">
-              <DialogHeader>
-                <DialogTitle className="font-display text-2xl">{project.title}</DialogTitle>
-                <DialogDescription>{project.description}</DialogDescription>
-              </DialogHeader>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <ProjectField label="Objective" value={project.objective} />
-                <ProjectField label="Dataset Type" value={project.dataset} />
-                <ProjectField label="My Role" value={project.role} />
-                <ProjectField label="Year" value={project.year} />
+            {/* Right: Info */}
+            <div className="relative flex flex-col gap-3 p-5 md:p-6">
+              <div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+                  {project.role} · {project.year}
+                </div>
+                <DialogTitle className="mt-1 font-display text-xl sm:text-2xl">
+                  {project.title}
+                </DialogTitle>
+                <DialogDescription className="mt-1.5 text-xs leading-relaxed">
+                  {project.description}
+                </DialogDescription>
               </div>
-              <div className="mt-4">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+
+              <div>
+                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   Tools Used
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((t) => (
-                    <Badge key={t} variant="outline" className="border-primary/40">
+                    <Badge
+                      key={t}
+                      variant="outline"
+                      className="border-border bg-surface text-[11px] text-foreground"
+                    >
                       {t}
                     </Badge>
                   ))}
                 </div>
               </div>
-              <div className="mt-4">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Key Insights
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div>
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Features
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    {project.features.slice(0, 4).map((f) => (
+                      <li key={f} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-1.5 text-sm text-muted-foreground">
-                  {project.insights.map((f) => (
-                    <li key={f} className="flex gap-2">
+                <div>
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Challenges
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    <li className="flex gap-1.5">
                       <span className="text-primary">▸</span>
-                      {f}
+                      <span>Cleaning messy {project.dataset.split("(")[0].trim().toLowerCase()}</span>
                     </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4 rounded-xl border border-primary/30 bg-primary/5 p-4">
-                <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-primary">
-                  Outcome
+                    <li className="flex gap-1.5">
+                      <span className="text-primary">▸</span>
+                      <span>Choosing the right visuals for the story</span>
+                    </li>
+                    <li className="flex gap-1.5">
+                      <span className="text-primary">▸</span>
+                      <span>Translating numbers into clear insights</span>
+                    </li>
+                  </ul>
                 </div>
-                <p className="text-sm text-muted-foreground">{project.outcome}</p>
+              </div>
+
+              <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  Learning Outcomes
+                </div>
+                <p className="text-[11.5px] leading-relaxed text-foreground/90">
+                  {project.outcome} Strengthened skills in {project.tech.slice(0, 2).join(" & ")} and
+                  data storytelling.
+                </p>
               </div>
             </div>
-          </>
+          </div>
         )}
       </DialogContent>
     </Dialog>
@@ -976,14 +996,6 @@ function ProjectModal({
 }
 
 
-function ProjectField({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-xl border border-border bg-surface/60 p-3">
-      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{label}</div>
-      <div className="font-medium">{value}</div>
-    </div>
-  );
-}
 
 /* ---------------- JOURNEY ---------------- */
 
