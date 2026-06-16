@@ -594,17 +594,17 @@ function AboutModal({
             <AboutBlock
               Icon={Code2}
               title="Technical Skills"
-              body="Excel, SQL, Python (Pandas), Power BI, Tableau, MySQL. Supported by HTML, CSS, JavaScript and Java."
+              body="Excel, Word, MySQL, Python, React.js, Node.js, HTML, CSS, JavaScript, Java, Figma — and I also make diagrams in draw.io."
             />
             <AboutBlock
               Icon={Heart}
               title="Interests"
-              body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
+              body="When I'm not diving into data or studying information systems, you can usually find me on the court playing basketball and badminton, or online playing computer games. I love things that require strategy and quick decision-making. I also highly value a good sleep cycle to keep my mind sharp and ready for the next challenge."
             />
             <AboutBlock
               Icon={Smile}
               title="Beyond Work"
-              body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and refining Figma components until they feel right."
+              body="Outside of my technical projects, I'm usually staying active through sports like basketball and badminton. I have a deep appreciation for the strategy involved in gaming, which often mirrors the logic I use in data analysis. To stay at my best, I prioritize rest and recovery, ensuring I'm always ready for the next challenge."
             />
           </div>
         </div>
@@ -1116,8 +1116,8 @@ function Contact() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
-          <motion.div {...fadeUp()} className="space-y-4">
+        <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-stretch">
+          <motion.div {...fadeUp()} className="flex h-full flex-col gap-4">
             <ContactRow
               Icon={Mail}
               label="Email"
@@ -1127,7 +1127,7 @@ function Contact() {
             <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
 
-            <div className="glass mt-6 rounded-2xl p-5">
+            <div className="glass mt-auto rounded-2xl p-5">
               <div className="text-sm font-semibold">Find me online</div>
               <div className="mt-3 flex gap-3">
                 {SOCIAL_LINKS.map(({ Icon, href, label }) => (
@@ -1150,7 +1150,7 @@ function Contact() {
           <motion.form
             {...fadeUp(0.1)}
             onSubmit={onSubmit}
-            className="glass space-y-3 rounded-3xl p-6 shadow-[var(--shadow-card)]"
+            className="glass flex h-full flex-col space-y-3 rounded-3xl p-6 shadow-[var(--shadow-card)]"
           >
             <div className="grid gap-3 sm:grid-cols-2">
               <Input
@@ -1179,7 +1179,7 @@ function Contact() {
               rows={6}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="resize-none rounded-xl bg-background/60"
+              className="flex-1 min-h-[150px] resize-none rounded-xl bg-background/60"
             />
             <Button
               type="submit"
