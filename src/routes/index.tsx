@@ -559,56 +559,53 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[92vh] w-[min(96vw,1000px)] max-w-[1000px] overflow-hidden border-2 border-primary/40 bg-[#0e1116] p-0 text-foreground shadow-[0_30px_90px_-20px_rgba(106,154,68,0.45)] sm:rounded-2xl">
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(106,154,68,0.18),transparent_60%)]" />
-          <div className="relative px-6 pb-5 pt-6 sm:px-8">
-            <DialogHeader className="text-left">
-              <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
-                — Full bio
-              </div>
-              <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
-                More about <span className="text-gradient">Khurt Pingoy</span>
-              </DialogTitle>
-              <DialogDescription className="text-muted-foreground">
-                A quick window into who I am, what I study, and where I'm headed.
-              </DialogDescription>
-            </DialogHeader>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <AboutBlock
-                Icon={User}
-                title="Personal Intro"
-                body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
-              />
-              <AboutBlock
-                Icon={GraduationCap}
-                title="Education"
-                body={
-                  "• 4th Year Student — Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
-                }
-              />
-              <AboutBlock
-                Icon={Code2}
-                title="Skills"
-                body="Excel, SQL, Python (Pandas), Power BI, Tableau and MySQL. Supported by HTML, CSS, JavaScript and Java."
-              />
-              <AboutBlock
-                Icon={Heart}
-                title="Interests"
-                body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
-              />
-              <AboutBlock
-                Icon={Target}
-                title="Career Goals"
-                body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions."
-              />
-              <AboutBlock
-                Icon={Smile}
-                title="Fun Facts"
-                body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and rebuilding the same Figma component until it feels right."
-              />
+      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
+        <div className="relative px-6 pb-6 pt-6 sm:px-8">
+          <DialogHeader className="text-left">
+            <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
+              — Full bio
             </div>
+            <DialogTitle className="mt-1 font-display text-2xl sm:text-3xl">
+              More about <span className="text-gradient">Khurt Pingoy</span>
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              A quick window into who I am, what I study, and where I'm headed.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <AboutBlock
+              Icon={User}
+              title="Personal Profile"
+              body="Khurt Rocaberte Pingoy — a 4th-year student based in the Philippines pursuing a career as a Data Analyst, turning raw data into clear insights."
+            />
+            <AboutBlock
+              Icon={GraduationCap}
+              title="Education"
+              body={
+                "• 4th Year — BS Information Systems\n• F. Bustamante NHS — Secondary\n• Sixto Babao Elementary — Primary"
+              }
+            />
+            <AboutBlock
+              Icon={Target}
+              title="Career Goal"
+              body="Become a professional Data Analyst — helping organizations make informed, data-driven decisions through dashboards and reporting."
+            />
+            <AboutBlock
+              Icon={Code2}
+              title="Technical Skills"
+              body="Excel, SQL, Python (Pandas), Power BI, Tableau, MySQL. Supported by HTML, CSS, JavaScript and Java."
+            />
+            <AboutBlock
+              Icon={Heart}
+              title="Interests"
+              body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
+            />
+            <AboutBlock
+              Icon={Smile}
+              title="Beyond Work"
+              body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and refining Figma components until they feel right."
+            />
           </div>
         </div>
       </DialogContent>
