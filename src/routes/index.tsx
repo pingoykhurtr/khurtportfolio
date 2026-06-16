@@ -1150,7 +1150,7 @@ function Contact() {
           <motion.form
             {...fadeUp(0.1)}
             onSubmit={onSubmit}
-            className="glass space-y-3 rounded-3xl p-6 shadow-[var(--shadow-card)]"
+            className="glass flex h-full flex-col space-y-3 rounded-3xl p-6 shadow-[var(--shadow-card)]"
           >
             <div className="grid gap-3 sm:grid-cols-2">
               <Input
