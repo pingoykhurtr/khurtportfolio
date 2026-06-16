@@ -1179,7 +1179,7 @@ function Contact() {
               rows={6}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="resize-none rounded-xl bg-background/60"
+              className="flex-1 min-h-[150px] resize-none rounded-xl bg-background/60"
             />
             <Button
               type="submit"
