@@ -1116,8 +1116,8 @@ function Contact() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
-          <motion.div {...fadeUp()} className="space-y-4">
+        <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-stretch">
+          <motion.div {...fadeUp()} className="flex h-full flex-col gap-4">
             <ContactRow
               Icon={Mail}
               label="Email"
