@@ -594,17 +594,17 @@ function AboutModal({
             <AboutBlock
               Icon={Code2}
               title="Technical Skills"
-              body="Excel, SQL, Python (Pandas), Power BI, Tableau, MySQL. Supported by HTML, CSS, JavaScript and Java."
+              body="Excel, Word, MySQL, Python, React.js, Node.js, HTML, CSS, JavaScript, Java, Figma — and I also make diagrams in draw.io."
             />
             <AboutBlock
               Icon={Heart}
               title="Interests"
-              body="Data analytics, business intelligence, dashboards, data visualization and storytelling with numbers."
+              body="When I'm not diving into data or studying information systems, you can usually find me on the court playing basketball and badminton, or online playing computer games. I love things that require strategy and quick decision-making. I also highly value a good sleep cycle to keep my mind sharp and ready for the next challenge."
             />
             <AboutBlock
               Icon={Smile}
               title="Beyond Work"
-              body="Coffee-fueled debugger. Loves clean keyboards, lo-fi beats, and refining Figma components until they feel right."
+              body="Outside of my technical projects, I'm usually staying active through sports like basketball and badminton. I have a deep appreciation for the strategy involved in gaming, which often mirrors the logic I use in data analysis. To stay at my best, I prioritize rest and recovery, ensuring I'm always ready for the next challenge."
             />
           </div>
         </div>
