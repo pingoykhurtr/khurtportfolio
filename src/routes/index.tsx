@@ -209,7 +209,7 @@ function Nav({
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-primary/10 bg-[rgba(17,19,23,0.85)] py-3 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+          ? "border-b border-border bg-background/85 py-3 shadow-[var(--shadow-card)] backdrop-blur-xl"
           : "border-b border-transparent bg-transparent py-5"
       }`}
     >
