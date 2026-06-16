@@ -1127,7 +1127,7 @@ function Contact() {
             <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
 
-            <div className="glass mt-6 rounded-2xl p-5">
+            <div className="glass mt-auto rounded-2xl p-5">
               <div className="text-sm font-semibold">Find me online</div>
               <div className="mt-3 flex gap-3">
                 {SOCIAL_LINKS.map(({ Icon, href, label }) => (
