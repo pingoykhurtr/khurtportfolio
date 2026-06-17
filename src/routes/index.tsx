@@ -805,12 +805,12 @@ function Projects({ onSelect }: { onSelect: (p: Project) => void }) {
     <section id="projects" className="relative bg-surface/40 py-28">
       <div className="mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
-          <div className="font-mono text-sm text-primary">— Selected analytics work</div>
+          <div className="font-mono text-sm text-primary">— Selected work</div>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">
-            Data <span className="text-gradient">Projects</span>
+            Projects & <span className="text-gradient">Case Studies</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Dashboards, analyses and data projects. Hover for the insight, click for the full case.
+            Software development projects and analytics work. Hover for the insight, click for the full case.
           </p>
         </motion.div>
 
@@ -943,13 +943,29 @@ function ProjectModal({
                 </div>
               </div>
 
+              {project.roleDetails && project.roleDetails.length > 0 && (
+                <div>
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Responsibilities
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    {project.roleDetails.map((r) => (
+                      <li key={r} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div className="grid gap-3 sm:grid-cols-2">
                 <div>
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                     Features
                   </div>
                   <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
-                    {project.features.slice(0, 4).map((f) => (
+                    {project.features.slice(0, project.features.length > 8 ? 7 : 4).map((f) => (
                       <li key={f} className="flex gap-1.5">
                         <span className="text-primary">▸</span>
                         <span>{f}</span>
@@ -959,34 +975,55 @@ function ProjectModal({
                 </div>
                 <div>
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    Challenges
+                    {project.challenges ? "Challenges" : "Key Insights"}
                   </div>
                   <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
-                    <li className="flex gap-1.5">
-                      <span className="text-primary">▸</span>
-                      <span>Cleaning messy {project.dataset.split("(")[0].trim().toLowerCase()}</span>
-                    </li>
-                    <li className="flex gap-1.5">
-                      <span className="text-primary">▸</span>
-                      <span>Choosing the right visuals for the story</span>
-                    </li>
-                    <li className="flex gap-1.5">
-                      <span className="text-primary">▸</span>
-                      <span>Translating numbers into clear insights</span>
-                    </li>
+                    {(project.challenges || project.insights.slice(0, 3)).map((item) => (
+                      <li key={item} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-border bg-surface p-3">
-                <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-                  Learning Outcomes
+              {project.learningOutcomes && project.learningOutcomes.length > 0 ? (
+                <div className="rounded-xl border border-border bg-surface p-3">
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Learning Outcomes
+                  </div>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    {project.learningOutcomes.map((lo) => (
+                      <li key={lo} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{lo}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <p className="text-[11.5px] leading-relaxed text-foreground/90">
-                  {project.outcome} Strengthened skills in {project.tech.slice(0, 2).join(" & ")} and
-                  data storytelling.
-                </p>
-              </div>
+              ) : (
+                <div className="rounded-xl border border-border bg-surface p-3">
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Learning Outcomes
+                  </div>
+                  <p className="text-[11.5px] leading-relaxed text-foreground/90">
+                    {project.outcome} Strengthened skills in {project.tech.slice(0, 2).join(" & ")} and
+                    data storytelling.
+                  </p>
+                </div>
+              )}
+
+              {project.impact && (
+                <div className="rounded-xl border border-primary/30 bg-primary/5 p-3">
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    Project Impact
+                  </div>
+                  <p className="text-[11.5px] leading-relaxed text-foreground/90">
+                    {project.impact}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -1000,11 +1037,11 @@ function ProjectModal({
 /* ---------------- JOURNEY ---------------- */
 
 const JOURNEY: { year: string; title: string; body: string; Icon: React.ComponentType<{ className?: string }> }[] = [
-  { year: "2023", title: "Excel & Data Organization", body: "Started learning Excel — formulas, pivot tables and structuring messy data into something useful.", Icon: BarChart3 },
-  { year: "2024", title: "SQL & Database Fundamentals", body: "Picked up SQL and relational basics: SELECT, JOINs, GROUP BY and schema design.", Icon: Database },
-  { year: "2025", title: "Web Systems & DB Projects", body: "Built systems backed by MySQL and explored reporting flows end-to-end.", Icon: LineChart },
-  { year: "2026", title: "Power BI, Python & Visualization", body: "Learning Power BI, Python (Pandas) and data visualization storytelling.", Icon: PieChart },
-  { year: "Future", title: "Professional Data Analyst", body: "Become a professional Data Analyst contributing to data-driven decision making.", Icon: TrendingUp },
+  { year: "2023", title: "Programming Foundation", body: "Started building my foundation in programming and system development through Java, HTML, and CSS while learning basic software design principles.", Icon: BarChart3 },
+  { year: "2024", title: "Academic Projects & Design", body: "Expanded my technical skills by creating academic software projects, improving database management knowledge, and practicing UI/UX design using Figma and Draw.io.", Icon: Database },
+  { year: "2025", title: "Web Systems & Capstone", body: "Worked on larger web-based systems using React JS, Node JS, TypeScript, APIs, and MySQL. Participated in developing ACMES CORE, a Construction Project Management System for our capstone project.", Icon: LineChart },
+  { year: "Present", title: "Data Analytics Exploration", body: "Continuing to strengthen my knowledge in databases, data management, reporting, and analytical thinking while exploring the field of Data Analytics.", Icon: PieChart },
+  { year: "Future", title: "Professional Data Analyst", body: "Become a Data Analyst who combines business knowledge, technical skills, and data-driven decision making to help organizations solve problems and improve performance.", Icon: TrendingUp },
 ];
 
 function Journey() {
@@ -1054,8 +1091,8 @@ function Journey() {
 
         {/* Stats counters */}
         <motion.div {...fadeUp(0.1)} className="mt-20 grid gap-4 sm:grid-cols-4">
-          <CounterCard value="6+" label="Data Projects" Icon={BarChart3} />
-          <CounterCard value="5+" label="Tools Mastered" Icon={Database} />
+          <CounterCard value="7+" label="Projects Completed" Icon={BarChart3} />
+          <CounterCard value="12+" label="Tools & Skills" Icon={Database} />
           <CounterCard value="3+" label="Years Learning" Icon={LineChart} />
           <CounterCard value="100%" label="Data-Driven" Icon={TrendingUp} />
         </motion.div>
