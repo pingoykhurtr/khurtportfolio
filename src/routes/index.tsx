@@ -899,25 +899,25 @@ function ProjectModal({
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
       <DialogContent
         className={`w-[90vw] ${
-          isFeatured ? "max-w-[1200px]" : "max-w-[1000px]"
+          isFeatured ? "max-w-[1300px]" : "max-w-[1000px]"
         } max-h-[92vh] overflow-y-auto border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
       >
         {project && (
-          <div className="grid gap-0 md:grid-cols-[1fr_1.1fr]">
+          <div className={`grid gap-0 ${isFeatured ? "md:grid-cols-[45fr_55fr]" : "md:grid-cols-[1fr_1.1fr]"}`}>
             {/* Left: Image + meta */}
-            <div className="relative flex flex-col gap-3 bg-surface p-5 md:p-6">
-              <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background">
+            <div className="relative flex flex-col gap-4 bg-surface p-5 md:p-7 md:sticky md:top-0 md:self-start md:max-h-[92vh] md:overflow-y-auto">
+              <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-card)]">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="block max-h-[60vh] w-full object-contain"
+                  className={`block w-full object-cover ${isFeatured ? "aspect-[4/3] md:aspect-[3/4]" : "max-h-[60vh] object-contain"}`}
                 />
               </div>
               <Badge className="w-fit bg-background/90 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
               <div>
-                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <div className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                   Tech Stack
                 </div>
                 <div className="flex flex-wrap gap-1.5">
