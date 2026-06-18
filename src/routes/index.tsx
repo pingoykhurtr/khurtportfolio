@@ -1169,7 +1169,7 @@ function Contact() {
               Icon={Mail}
               label="Email"
               value="pingoykhurtr@gmail.com"
-              href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+              href="mailto:pingoykhurtr@gmail.com?subject=Portfolio Inquiry"
             />
             <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
