@@ -130,7 +130,8 @@ function PortfolioPage() {
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground">
+      <AtmosphericEffects />
       <Toaster
         position="top-right"
         toastOptions={{
