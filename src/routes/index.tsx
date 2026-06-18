@@ -1123,13 +1123,30 @@ function Contact() {
       return;
     }
     setLoading(true);
-    // Simulated send. Wire to EmailJS / FormSubmit when keys are added.
-    await new Promise((r) => setTimeout(r, 1100));
-    setLoading(false);
-    toast.success("Message sent! I'll get back to you soon.", {
-      description: `Thanks, ${form.name} — heading to pingoykhurtr@gmail.com.`,
-    });
-    setForm({ name: "", email: "", phone: "", message: "" });
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/pingoykhurtr@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          _subject: `Portfolio Inquiry from ${form.name}`,
+          _template: "table",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || (data && data.success === "false")) {
+        throw new Error("send failed");
+      }
+      toast.success("Thank you! Your message has been sent successfully.");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      toast.error("Message failed to send. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
