@@ -893,23 +893,44 @@ function ProjectModal({
   project: Project | null;
   onClose: () => void;
 }) {
+  const isFeatured = !!(project?.roleDetails && project.roleDetails.length > 0);
   return (
     <Dialog open={!!project} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="w-[min(96vw,1100px)] max-w-[1100px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
+      <DialogContent
+        className={`w-[90vw] ${
+          isFeatured ? "max-w-[1200px]" : "max-w-[1000px]"
+        } max-h-[92vh] overflow-y-auto border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
+      >
         {project && (
-          <div className="grid gap-0 md:grid-cols-[1.05fr_1fr]">
-            {/* Left: Image */}
-            <div className="relative flex items-center justify-center bg-surface p-4 md:p-6">
+          <div className="grid gap-0 md:grid-cols-[1fr_1.1fr]">
+            {/* Left: Image + meta */}
+            <div className="relative flex flex-col gap-3 bg-surface p-5 md:p-6">
               <div className="relative w-full overflow-hidden rounded-xl border border-border bg-background">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="block max-h-[55vh] w-full object-contain"
+                  className="block max-h-[60vh] w-full object-contain"
                 />
               </div>
-              <Badge className="absolute left-6 top-6 bg-background/90 text-foreground backdrop-blur">
+              <Badge className="w-fit bg-background/90 text-foreground backdrop-blur">
                 {project.category}
               </Badge>
+              <div>
+                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Tech Stack
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
+                    <Badge
+                      key={t}
+                      variant="outline"
+                      className="border-border bg-background text-[11px] text-foreground"
+                    >
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Right: Info */}
@@ -926,29 +947,26 @@ function ProjectModal({
                 </DialogDescription>
               </div>
 
-              <div>
-                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Tools Used
+              <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                  Key Features
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tech.map((t) => (
-                    <Badge
-                      key={t}
-                      variant="outline"
-                      className="border-border bg-surface text-[11px] text-foreground"
-                    >
-                      {t}
-                    </Badge>
+                <ul className={`grid gap-x-3 gap-y-0.5 text-[11.5px] text-foreground/90 ${isFeatured ? "sm:grid-cols-2" : ""}`}>
+                  {project.features.map((f) => (
+                    <li key={f} className="flex gap-1.5">
+                      <span className="text-primary">▸</span>
+                      <span>{f}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
 
               {project.roleDetails && project.roleDetails.length > 0 && (
-                <div>
-                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    Responsibilities
+                <div className="rounded-xl border border-border bg-surface p-3">
+                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    My Role
                   </div>
-                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                  <ul className="grid gap-x-3 gap-y-0.5 text-[11.5px] text-foreground/90 sm:grid-cols-2">
                     {project.roleDetails.map((r) => (
                       <li key={r} className="flex gap-1.5">
                         <span className="text-primary">▸</span>
@@ -959,41 +977,12 @@ function ProjectModal({
                 </div>
               )}
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div>
-                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    Features
-                  </div>
-                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
-                    {project.features.slice(0, project.features.length > 8 ? 7 : 4).map((f) => (
-                      <li key={f} className="flex gap-1.5">
-                        <span className="text-primary">▸</span>
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    {project.challenges ? "Challenges" : "Key Insights"}
-                  </div>
-                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
-                    {(project.challenges || project.insights.slice(0, 3)).map((item) => (
-                      <li key={item} className="flex gap-1.5">
-                        <span className="text-primary">▸</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
               {project.learningOutcomes && project.learningOutcomes.length > 0 ? (
                 <div className="rounded-xl border border-border bg-surface p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     Learning Outcomes
                   </div>
-                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                  <ul className="grid gap-x-3 gap-y-0.5 text-[11.5px] text-foreground/90 sm:grid-cols-2">
                     {project.learningOutcomes.map((lo) => (
                       <li key={lo} className="flex gap-1.5">
                         <span className="text-primary">▸</span>
@@ -1005,12 +994,16 @@ function ProjectModal({
               ) : (
                 <div className="rounded-xl border border-border bg-surface p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-                    Learning Outcomes
+                    Key Insights
                   </div>
-                  <p className="text-[11.5px] leading-relaxed text-foreground/90">
-                    {project.outcome} Strengthened skills in {project.tech.slice(0, 2).join(" & ")} and
-                    data storytelling.
-                  </p>
+                  <ul className="space-y-0.5 text-[11.5px] text-foreground/90">
+                    {project.insights.map((item) => (
+                      <li key={item} className="flex gap-1.5">
+                        <span className="text-primary">▸</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
 
@@ -1130,13 +1123,30 @@ function Contact() {
       return;
     }
     setLoading(true);
-    // Simulated send. Wire to EmailJS / FormSubmit when keys are added.
-    await new Promise((r) => setTimeout(r, 1100));
-    setLoading(false);
-    toast.success("Message sent! I'll get back to you soon.", {
-      description: `Thanks, ${form.name} — heading to pingoykhurtr@gmail.com.`,
-    });
-    setForm({ name: "", email: "", phone: "", message: "" });
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/pingoykhurtr@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
+          _subject: `Portfolio Inquiry from ${form.name}`,
+          _template: "table",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || (data && data.success === "false")) {
+        throw new Error("send failed");
+      }
+      toast.success("Thank you! Your message has been sent successfully.");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      toast.error("Message failed to send. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -1159,7 +1169,7 @@ function Contact() {
               Icon={Mail}
               label="Email"
               value="pingoykhurtr@gmail.com"
-              href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+              href="mailto:pingoykhurtr@gmail.com?subject=Portfolio Inquiry"
             />
             <ContactRow Icon={Phone} label="Phone" value="0967 823 2914" href="tel:+639678232914" />
             <ContactRow Icon={MapPin} label="Location" value="Philippines" />
