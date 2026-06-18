@@ -1301,3 +1301,81 @@ function Footer() {
     </footer>
   );
 }
+
+/* ---------------- ATMOSPHERIC EFFECTS ---------------- */
+
+function AtmosphericEffects() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
+    >
+      {/* Light mode: line-art birds */}
+      <div className="atmos-light absolute inset-0">
+        {[
+          { top: "8%", delay: "0s", duration: "70s", scale: 1, opacity: 0.09 },
+          { top: "14%", delay: "-22s", duration: "90s", scale: 0.7, opacity: 0.07 },
+          { top: "22%", delay: "-45s", duration: "80s", scale: 1.1, opacity: 0.08 },
+          { top: "5%", delay: "-60s", duration: "110s", scale: 0.55, opacity: 0.06 },
+          { top: "30%", delay: "-15s", duration: "100s", scale: 0.85, opacity: 0.07 },
+        ].map((b, i) => (
+          <svg
+            key={i}
+            className="atmos-bird absolute"
+            style={{
+              top: b.top,
+              left: "-10%",
+              animationDelay: b.delay,
+              animationDuration: b.duration,
+              transform: `scale(${b.scale})`,
+              opacity: b.opacity,
+            }}
+            width="40"
+            height="18"
+            viewBox="0 0 40 18"
+            fill="none"
+            stroke="#111317"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M2 12 C 8 2, 14 2, 20 10 C 26 2, 32 2, 38 12" />
+          </svg>
+        ))}
+      </div>
+
+      {/* Dark mode: subtle lightning line streaks */}
+      <div className="atmos-dark absolute inset-0">
+        {[
+          { left: "12%", top: "10%", delay: "0s", duration: "14s", scale: 1 },
+          { left: "72%", top: "18%", delay: "-7s", duration: "18s", scale: 0.9 },
+          { left: "40%", top: "55%", delay: "-12s", duration: "22s", scale: 1.1 },
+          { left: "85%", top: "65%", delay: "-4s", duration: "16s", scale: 0.8 },
+          { left: "20%", top: "78%", delay: "-9s", duration: "20s", scale: 0.95 },
+        ].map((s, i) => (
+          <svg
+            key={i}
+            className="atmos-bolt absolute"
+            style={{
+              left: s.left,
+              top: s.top,
+              animationDelay: s.delay,
+              animationDuration: s.duration,
+              transform: `scale(${s.scale})`,
+            }}
+            width="60"
+            height="160"
+            viewBox="0 0 60 160"
+            fill="none"
+            stroke="#8DBCC7"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M34 2 L18 70 L36 70 L22 158" />
+          </svg>
+        ))}
+      </div>
+    </div>
+  );
+}
