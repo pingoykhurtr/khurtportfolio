@@ -150,3 +150,38 @@
   33% { transform: translate(20px, -30px) scale(1.05); }
   66% { transform: translate(-15px, 15px) scale(0.97); }
 }
+
+/* Atmospheric effects: birds (light) + lightning (dark) */
+.atmos-light { display: block; }
+.atmos-dark { display: none; }
+.dark .atmos-light { display: none; }
+.dark .atmos-dark { display: block; }
+
+@keyframes atmos-bird-drift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(60vw, 4vh); }
+  100% { transform: translate(120vw, 0); }
+}
+.atmos-bird {
+  animation-name: atmos-bird-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+.atmos-bird path { stroke: #111317; }
+.dark .atmos-bird path { stroke: #d1d5db; }
+
+@keyframes atmos-bolt-pulse {
+  0%, 100% { opacity: 0; }
+  45%      { opacity: 0; }
+  55%      { opacity: 0.18; }
+  65%      { opacity: 0; }
+}
+.atmos-bolt {
+  animation-name: atmos-bolt-pulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+  will-change: opacity;
+}
+
