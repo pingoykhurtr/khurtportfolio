@@ -13,7 +13,6 @@ import {
   Moon,
   Menu,
   X,
-  Sparkles,
   Send,
   Loader2,
   MapPin,
