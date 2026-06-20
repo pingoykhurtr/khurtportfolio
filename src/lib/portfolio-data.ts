@@ -118,7 +118,7 @@ export const projects: Project[] = [
       "Project Analytics Dashboard",
     ],
     role: "Primary Developer & System Designer",
-    year: "2025",
+    year: "2026 - Present",
     gradient: "from-sky-500/30 to-cyan-500/20",
     emoji: "🏗️",
     image: project7.url,
