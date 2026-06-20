@@ -350,10 +350,6 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:items-center">
         <motion.div {...fadeUp()}>
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary">
-            <Sparkles className="h-3.5 w-3.5" />
-            Available for collaborations
-          </div>
           <p className="font-mono text-sm text-muted-foreground">Hello, I'm</p>
           <h1 className="mt-2 font-display text-5xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl">
             Khurt <span className="text-gradient">Pingoy</span>
