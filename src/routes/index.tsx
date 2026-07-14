@@ -643,18 +643,8 @@ function Skills() {
     <section id="skills" className="relative py-28">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      {/* Background blur overlay when any skill is hovered */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="pointer-events-none fixed inset-0 z-30 bg-background/40 backdrop-blur-md"
-          />
-        )}
-      </AnimatePresence>
+      {/* No global blur overlay — hover focus is per-card only */}
+
 
       <div className="relative mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
