@@ -887,10 +887,10 @@ function ProjectModal({
       <DialogContent
         className={`w-[90vw] ${
           isFeatured ? "max-w-[1300px]" : "max-w-[1000px]"
-        } max-h-[92vh] overflow-y-auto border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
+        } max-h-[92vh] overflow-y-auto border border-border bg-surface p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
       >
         {project && (
-          <div className={`grid gap-0 ${isFeatured ? "md:grid-cols-[45fr_55fr]" : "md:grid-cols-[1fr_1.1fr]"}`}>
+          <div className={`grid gap-0 bg-surface ${isFeatured ? "md:grid-cols-[45fr_55fr]" : "md:grid-cols-[1fr_1.1fr]"}`}>
             {/* Left: Image + meta */}
             <div className="relative flex flex-col gap-4 bg-surface p-5 md:p-7 md:sticky md:top-0 md:self-start md:max-h-[92vh] md:overflow-y-auto">
               <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-card)]">
