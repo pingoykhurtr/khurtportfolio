@@ -935,7 +935,7 @@ function ProjectModal({
                 </DialogDescription>
               </div>
 
-              <div className="rounded-xl border border-border bg-surface p-3">
+              <div className="rounded-xl border border-border bg-card p-3">
                 <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
                   Key Features
                 </div>
@@ -950,7 +950,7 @@ function ProjectModal({
               </div>
 
               {project.roleDetails && project.roleDetails.length > 0 && (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     My Role
                   </div>
@@ -966,7 +966,7 @@ function ProjectModal({
               )}
 
               {project.learningOutcomes && project.learningOutcomes.length > 0 ? (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     Learning Outcomes
                   </div>
@@ -980,7 +980,7 @@ function ProjectModal({
                   </ul>
                 </div>
               ) : (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     Key Insights
                   </div>
