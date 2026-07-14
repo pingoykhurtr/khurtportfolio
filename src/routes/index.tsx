@@ -557,7 +557,7 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
+      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] max-h-[90vh] overflow-y-auto md:max-h-none md:overflow-hidden no-scrollbar border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
         <div className="relative px-6 pb-6 pt-6 sm:px-8">
           <DialogHeader className="text-left">
             <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
