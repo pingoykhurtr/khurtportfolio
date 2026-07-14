@@ -922,7 +922,7 @@ function ProjectModal({
             </div>
 
             {/* Right: Info */}
-            <div className="relative flex flex-col gap-3 p-5 md:p-6">
+            <div className="relative flex flex-col gap-3 bg-surface p-5 md:p-6">
               <div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
                   {project.role} · {project.year}
