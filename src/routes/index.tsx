@@ -167,6 +167,7 @@ function PortfolioPage() {
 
       <AboutModal open={aboutOpen} onOpenChange={setAboutOpen} />
       <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      <KhurtChat />
     </div>
   );
 }
