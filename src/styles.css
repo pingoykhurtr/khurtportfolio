@@ -185,3 +185,17 @@
   will-change: opacity;
 }
 
+/* Hide scrollbar (used for mobile-only scroll containers) */
+@media (max-width: 767px) {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Chat panel scrollbar — subtle */
+.khurt-scroll::-webkit-scrollbar { width: 6px; }
+.khurt-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--primary) 40%, transparent);
+  border-radius: 3px;
+}
+
+

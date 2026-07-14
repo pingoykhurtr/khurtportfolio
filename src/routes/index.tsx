@@ -47,6 +47,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { KhurtChat } from "@/components/KhurtChat";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -166,6 +167,7 @@ function PortfolioPage() {
 
       <AboutModal open={aboutOpen} onOpenChange={setAboutOpen} />
       <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
+      <KhurtChat />
     </div>
   );
 }
@@ -555,7 +557,7 @@ function AboutModal({
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] overflow-hidden border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
+      <DialogContent className="w-[min(96vw,960px)] max-w-[960px] max-h-[90vh] overflow-y-auto md:max-h-none md:overflow-hidden no-scrollbar border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl">
         <div className="relative px-6 pb-6 pt-6 sm:px-8">
           <DialogHeader className="text-left">
             <div className="font-mono text-xs uppercase tracking-[0.25em] text-primary">
@@ -641,18 +643,8 @@ function Skills() {
     <section id="skills" className="relative py-28">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      {/* Background blur overlay when any skill is hovered */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="pointer-events-none fixed inset-0 z-30 bg-background/40 backdrop-blur-md"
-          />
-        )}
-      </AnimatePresence>
+      {/* No global blur overlay — hover focus is per-card only */}
+
 
       <div className="relative mx-auto max-w-6xl px-4">
         <motion.div {...fadeUp()} className="text-center">
@@ -709,7 +701,7 @@ function SkillCard({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
     >
-      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-glow)]">
+      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03] group-hover:border-primary/60 group-hover:shadow-[0_0_0_1px_var(--primary),var(--shadow-glow)]">
         <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative flex items-start justify-between">
           <div className="text-3xl">{skill.icon}</div>
@@ -895,10 +887,10 @@ function ProjectModal({
       <DialogContent
         className={`w-[90vw] ${
           isFeatured ? "max-w-[1300px]" : "max-w-[1000px]"
-        } max-h-[92vh] overflow-y-auto border border-border bg-card p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
+        } max-h-[92vh] overflow-y-auto border border-border bg-surface p-0 text-foreground shadow-[var(--shadow-elevated)] sm:rounded-2xl`}
       >
         {project && (
-          <div className={`grid gap-0 ${isFeatured ? "md:grid-cols-[45fr_55fr]" : "md:grid-cols-[1fr_1.1fr]"}`}>
+          <div className={`grid gap-0 bg-surface ${isFeatured ? "md:grid-cols-[45fr_55fr]" : "md:grid-cols-[1fr_1.1fr]"}`}>
             {/* Left: Image + meta */}
             <div className="relative flex flex-col gap-4 bg-surface p-5 md:p-7 md:sticky md:top-0 md:self-start md:max-h-[92vh] md:overflow-y-auto">
               <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-card)]">
@@ -930,7 +922,7 @@ function ProjectModal({
             </div>
 
             {/* Right: Info */}
-            <div className="relative flex flex-col gap-3 p-5 md:p-6">
+            <div className="relative flex flex-col gap-3 bg-surface p-5 md:p-6">
               <div>
                 <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
                   {project.role} · {project.year}
@@ -943,7 +935,7 @@ function ProjectModal({
                 </DialogDescription>
               </div>
 
-              <div className="rounded-xl border border-border bg-surface p-3">
+              <div className="rounded-xl border border-border bg-card p-3">
                 <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
                   Key Features
                 </div>
@@ -958,7 +950,7 @@ function ProjectModal({
               </div>
 
               {project.roleDetails && project.roleDetails.length > 0 && (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     My Role
                   </div>
@@ -974,7 +966,7 @@ function ProjectModal({
               )}
 
               {project.learningOutcomes && project.learningOutcomes.length > 0 ? (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     Learning Outcomes
                   </div>
@@ -988,7 +980,7 @@ function ProjectModal({
                   </ul>
                 </div>
               ) : (
-                <div className="rounded-xl border border-border bg-surface p-3">
+                <div className="rounded-xl border border-border bg-card p-3">
                   <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                     Key Insights
                   </div>
