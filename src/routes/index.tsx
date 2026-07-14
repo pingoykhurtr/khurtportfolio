@@ -701,7 +701,7 @@ function SkillCard({
       onMouseEnter={() => onHover(true)}
       onMouseLeave={() => onHover(false)}
     >
-      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/50 group-hover:shadow-[var(--shadow-glow)]">
+      <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03] group-hover:border-primary/60 group-hover:shadow-[0_0_0_1px_var(--primary),var(--shadow-glow)]">
         <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative flex items-start justify-between">
           <div className="text-3xl">{skill.icon}</div>
