@@ -181,10 +181,6 @@
   animation-name: atmos-bolt-pulse;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-.atmos-bolt {
-  animation-name: atmos-bolt-pulse;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
   opacity: 0;
   will-change: opacity;
 }
