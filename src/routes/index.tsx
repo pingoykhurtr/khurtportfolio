@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import {
-  Download,
   FileText,
   ArrowRight,
   Github,
