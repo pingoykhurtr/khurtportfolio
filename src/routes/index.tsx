@@ -747,7 +747,7 @@ function SkillCard({
                 </span>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
-              <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
+              <div className="mt-3 rounded-lg bg-surface p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>
                 {skill.example}
               </div>
