@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import {
-  Download,
+  FileText,
   ArrowRight,
   Github,
   Linkedin,
@@ -35,6 +35,7 @@ import { Toaster, toast } from "sonner";
 import formalAsset from "@/assets/formal.png.asset.json";
 import shyAsset from "@/assets/shy.png.asset.json";
 import aboutAsset from "@/assets/about.jpg.asset.json";
+import cvAsset from "@/assets/cv.pdf.asset.json";
 import { skillCategories, projects, type Project, type Skill } from "@/lib/portfolio-data";
 import {
   Dialog,
@@ -385,9 +386,9 @@ function Hero({ onViewProjects }: { onViewProjects: () => void }) {
               asChild
               className="group rounded-full bg-gradient-to-r from-primary to-primary-glow text-primary-foreground shadow-[var(--shadow-glow)] transition-transform hover:scale-[1.03]"
             >
-              <a href="/cv.pdf" download>
-                <Download className="mr-2 h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-                Download CV
+              <a href={cvAsset.url} target="_blank" rel="noopener noreferrer">
+                <FileText className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" />
+                View CV
               </a>
             </Button>
             <Button
