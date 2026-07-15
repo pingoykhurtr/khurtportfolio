@@ -40,9 +40,9 @@ games, strategy, and keeping a healthy sleep cycle.
 - Sixto Babao Elementary — Primary
 
 === CAREER GOAL ===
-Become a professional Data Analyst who combines business knowledge, technical skills,
-and data-driven decision making to help organizations solve problems and improve
-performance.
+My goal is to become a professional Data Analyst who combines business
+knowledge, technical skills, and data-driven decision making to help
+organizations solve problems and improve performance.
 
 === TECHNICAL SKILLS ===
 Programming & Development: HTML, CSS, JavaScript, TypeScript, React JS, Node JS,
