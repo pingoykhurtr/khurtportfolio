@@ -739,7 +739,7 @@ function SkillCard({
             transition={{ duration: 0.18 }}
             className="pointer-events-none absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2"
           >
-            <div className="glass rounded-2xl border border-primary/40 bg-card/95 p-4 shadow-[var(--shadow-elevated)]">
+            <div className="rounded-2xl border border-primary/40 bg-card p-4 shadow-[var(--shadow-elevated)] dark:bg-[#1F2125]" style={{ backdropFilter: "none", WebkitBackdropFilter: "none" }}>
               <div className="flex items-center justify-between">
                 <div className="text-sm font-semibold text-primary">{skill.name}</div>
                 <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
@@ -747,7 +747,7 @@ function SkillCard({
                 </span>
               </div>
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
-              <div className="mt-3 rounded-lg bg-surface/80 p-2 text-[11px]">
+              <div className="mt-3 rounded-lg bg-surface p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>
                 {skill.example}
               </div>
@@ -758,7 +758,7 @@ function SkillCard({
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1">
                     {skill.projectsUsed.map((p) => (
-                      <span key={p} className="rounded-full border border-border bg-surface/60 px-2 py-0.5 text-[10px] text-muted-foreground">
+                      <span key={p} className="rounded-full border border-border bg-surface px-2 py-0.5 text-[10px] text-muted-foreground">
                         {p}
                       </span>
                     ))}

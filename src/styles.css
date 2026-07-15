@@ -198,4 +198,28 @@
   border-radius: 3px;
 }
 
+/* Markdown formatting inside assistant bubbles */
+.khurt-md > * + * { margin-top: 0.5rem; }
+.khurt-md p { line-height: 1.5; }
+.khurt-md strong { color: var(--primary); font-weight: 600; }
+.khurt-md h1, .khurt-md h2, .khurt-md h3, .khurt-md h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.5rem;
+}
+.khurt-md ul { list-style: disc; padding-left: 1.15rem; }
+.khurt-md ol { list-style: decimal; padding-left: 1.15rem; }
+.khurt-md li + li { margin-top: 0.15rem; }
+.khurt-md code {
+  background: color-mix(in oklab, var(--primary) 15%, transparent);
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+.khurt-md a { color: var(--primary); text-decoration: underline; }
+
+
 
