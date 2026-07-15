@@ -758,7 +758,7 @@ function SkillCard({
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1">
                     {skill.projectsUsed.map((p) => (
-                      <span key={p} className="rounded-full border border-border bg-surface/60 px-2 py-0.5 text-[10px] text-muted-foreground">
+                      <span key={p} className="rounded-full border border-border bg-surface px-2 py-0.5 text-[10px] text-muted-foreground">
                         {p}
                       </span>
                     ))}
