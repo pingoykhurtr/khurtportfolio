@@ -95,10 +95,11 @@ export function KhurtChat() {
             >
               <X className="h-3 w-3" />
             </button>
-            <div className="font-display text-sm font-semibold text-primary">Hi, I'm Khurt 👋</div>
+            <div className="font-display text-sm font-semibold text-primary">👋 Hi! I'm Khurt's AI assistant</div>
             <div className="mt-1 leading-snug text-muted-foreground">
-              Your AI portfolio assistant. Ask me anything about my skills, projects, or experience.
+              Click <span className="font-semibold text-foreground">Ask Me</span> to learn about my skills, projects, and experience.
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
