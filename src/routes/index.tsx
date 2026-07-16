@@ -725,10 +725,8 @@ function SkillCard({
             <div className="rounded-2xl border border-primary/40 bg-card p-4 shadow-[var(--shadow-elevated)] dark:bg-[#1F2125]" style={{ backdropFilter: "none", WebkitBackdropFilter: "none" }}>
               <div className="flex items-center justify-between">
                 <div className="text-sm font-semibold text-primary">{skill.name}</div>
-                <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
-                  {skill.level}
-                </span>
               </div>
+
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>
