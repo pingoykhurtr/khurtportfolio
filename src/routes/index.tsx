@@ -704,31 +704,13 @@ function SkillCard({
     >
       <div className="glass relative overflow-hidden rounded-2xl p-5 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03] group-hover:border-primary/60 group-hover:shadow-[0_0_0_1px_var(--primary),var(--shadow-glow)]">
         <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="relative flex items-start justify-between">
+        <div className="relative flex items-start">
           <div className="text-3xl">{skill.icon}</div>
-          <Badge
-            variant="outline"
-            className="border-primary/40 bg-primary/10 text-[10px] uppercase tracking-wider text-primary"
-          >
-            {skill.level}
-          </Badge>
         </div>
         <h4 className="mt-4 font-display text-lg font-semibold">{skill.name}</h4>
         <p className="mt-1 text-xs text-muted-foreground">{skill.short}</p>
-
-        <div className="mt-4">
-          <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-primary to-primary-glow transition-all duration-700"
-              style={{ width: `${skill.progress}%` }}
-            />
-          </div>
-          <div className="mt-1.5 flex justify-between font-mono text-[10px] text-muted-foreground">
-            <span>Progress</span>
-            <span>{skill.progress}%</span>
-          </div>
-        </div>
       </div>
+
 
       {/* Floating info popup */}
       <AnimatePresence>
@@ -743,10 +725,8 @@ function SkillCard({
             <div className="rounded-2xl border border-primary/40 bg-card p-4 shadow-[var(--shadow-elevated)] dark:bg-[#1F2125]" style={{ backdropFilter: "none", WebkitBackdropFilter: "none" }}>
               <div className="flex items-center justify-between">
                 <div className="text-sm font-semibold text-primary">{skill.name}</div>
-                <span className="rounded-full border border-primary/40 bg-primary/10 px-2 py-0.5 text-[10px] uppercase tracking-wider text-primary">
-                  {skill.level}
-                </span>
               </div>
+
               <p className="mt-1 text-xs text-muted-foreground">{skill.detail}</p>
               <div className="mt-3 rounded-lg bg-surface p-2 text-[11px]">
                 <span className="font-mono text-primary">↳ </span>

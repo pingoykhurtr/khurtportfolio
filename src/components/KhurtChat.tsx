@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Sparkles } from "lucide-react";
+import { X, Send } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { chatWithKhurt } from "@/lib/api/chat.functions";
 import formalAsset from "@/assets/formal.png.asset.json";
@@ -95,59 +95,44 @@ export function KhurtChat() {
             >
               <X className="h-3 w-3" />
             </button>
-            <div className="font-display text-sm font-semibold text-primary">Hi, I'm Khurt 👋</div>
+            <div className="font-display text-sm font-semibold text-primary">👋 Hi! I'm Khurt's AI assistant</div>
             <div className="mt-1 leading-snug text-muted-foreground">
-              Your AI portfolio assistant. Ask me anything about my skills, projects, or experience.
+              Click <span className="font-semibold text-foreground">Ask Me</span> to learn about my skills, projects, and experience.
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Floating launcher */}
+      {/* Floating launcher — profile avatar + "Ask Me" pill */}
       <motion.button
         onClick={() => setOpen((v) => !v)}
-        aria-label={open ? "Close chat" : "Open AI assistant"}
+        aria-label={open ? "Close chat" : "Ask Me — open portfolio assistant"}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.5, type: "spring", stiffness: 200, damping: 18 }}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.95 }}
-        className="group fixed bottom-5 right-5 z-[70] grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-primary to-primary-glow text-primary-foreground shadow-[var(--shadow-glow)] ring-2 ring-primary/20 sm:bottom-6 sm:right-6"
+        whileHover={{ scale: 1.04, boxShadow: "var(--shadow-elevated)" }}
+        whileTap={{ scale: 0.97 }}
+        className="group fixed bottom-5 right-5 z-[70] flex items-center gap-2.5 rounded-full border border-primary/40 bg-card py-1.5 pl-1.5 pr-4 text-foreground shadow-[var(--shadow-card)] transition-colors hover:border-primary sm:bottom-6 sm:right-6"
       >
-        {/* Soft pulsing glow */}
-        <span className="pointer-events-none absolute inset-0 -z-10 animate-ping rounded-full bg-primary/30" />
-
-        <AnimatePresence mode="wait" initial={false}>
-          {open ? (
-            <motion.span
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <X className="h-6 w-6" />
-            </motion.span>
-          ) : (
-            <motion.span
-              key="ai"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Sparkles className="h-6 w-6" />
-            </motion.span>
-          )}
-        </AnimatePresence>
-
-        {/* AI badge */}
-        {!open && (
-          <span className="absolute -right-1 -top-1 rounded-full border-2 border-background bg-foreground px-1.5 py-[1px] font-mono text-[9px] font-bold leading-none tracking-wider text-background">
-            AI
-          </span>
+        {open ? (
+          <>
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/15 text-primary">
+              <X className="h-4 w-4" />
+            </span>
+            <span className="font-display text-sm font-semibold">Close</span>
+          </>
+        ) : (
+          <>
+            <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full border border-primary/50 shadow-sm">
+              <img src={formalAsset.url} alt="Khurt" className="h-full w-full object-cover" />
+              <span className="absolute bottom-0 right-0 h-2 w-2 rounded-full border border-card bg-emerald-500" />
+            </span>
+            <span className="font-display text-sm font-semibold tracking-tight">Ask Me</span>
+          </>
         )}
       </motion.button>
+
 
       {/* Chat panel */}
       <AnimatePresence>
