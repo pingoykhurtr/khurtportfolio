@@ -221,5 +221,23 @@
 }
 .khurt-md a { color: var(--primary); text-decoration: underline; }
 
+/* Loading screen animations */
+.loader-avatar { animation: loader-float 4s ease-in-out infinite; }
+@keyframes loader-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.loader-bar {
+  width: 0%;
+  animation: loader-progress 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes loader-progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+
+
 
 
