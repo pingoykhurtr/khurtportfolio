@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
@@ -29,6 +29,7 @@ import {
   LineChart,
   PieChart,
   TrendingUp,
+  ExternalLink,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
@@ -952,6 +953,35 @@ function ProjectCard({
   );
 }
 
+function ProjectActionButton({
+  href,
+  icon: Icon,
+  label,
+}: {
+  href?: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}) {
+  const baseClass =
+    "inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-primary/40 bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:border-primary hover:bg-primary/10 hover:text-primary hover:shadow-[var(--shadow-glow)] focus:outline-none focus:ring-2 focus:ring-primary/40 active:scale-[0.98]";
+
+  if (!href) {
+    return (
+      <button type="button" className={baseClass} onClick={(e) => e.preventDefault()}>
+        <Icon className="h-4 w-4" />
+        <span>{label}</span>
+      </button>
+    );
+  }
+
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className={baseClass}>
+      <Icon className="h-4 w-4" />
+      <span>{label}</span>
+    </a>
+  );
+}
+
 function ProjectModal({
   project,
   onClose,
@@ -1083,6 +1113,20 @@ function ProjectModal({
                   </p>
                 </div>
               )}
+
+              {/* Action buttons */}
+              <div className="mt-2 flex flex-col gap-3 pt-2 sm:flex-row">
+                <ProjectActionButton
+                  href={project.liveDemo}
+                  icon={ExternalLink}
+                  label="Live Demo"
+                />
+                <ProjectActionButton
+                  href={project.sourceCode}
+                  icon={Github}
+                  label="Source Code"
+                />
+              </div>
             </div>
           </div>
         )}

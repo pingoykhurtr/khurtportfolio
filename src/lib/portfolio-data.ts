@@ -92,6 +92,8 @@ export type Project = {
   learningOutcomes?: string[];
   impact?: string;
   challenges?: string[];
+  liveDemo?: string;
+  sourceCode?: string;
 };
 
 export const projects: Project[] = [
@@ -165,6 +167,8 @@ export const projects: Project[] = [
       "Implementing Critical Path Method logic for real-time schedule analysis",
       "Building responsive dashboards that display complex project metrics",
     ],
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "Tic Tac Toe Game",
@@ -181,6 +185,8 @@ export const projects: Project[] = [
     dataset: "N/A — game state managed in memory",
     insights: ["Reinforced 2D array handling", "Strengthened condition logic", "Improved UI event handling in Java"],
     outcome: "A fully working Tic Tac Toe game built purely with Java.",
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "Snake Game",
@@ -197,6 +203,8 @@ export const projects: Project[] = [
     dataset: "N/A — runtime game state only",
     insights: ["Practiced Java Swing rendering", "Learned game loop timing", "Handled collision detection"],
     outcome: "A complete, playable Snake game built entirely in Java.",
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "Water Billing Consumption — Bongbong, Panacan, Davao City",
@@ -213,6 +221,8 @@ export const projects: Project[] = [
     dataset: "Local consumer & meter reading records",
     insights: ["Modeled billing rules in Java", "Practiced OOP for real-world data", "Improved input validation"],
     outcome: "A working water billing app tailored to the Bongbong community in Panacan, Davao City.",
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "Agricultural Monitoring Analytics",
@@ -229,6 +239,8 @@ export const projects: Project[] = [
     dataset: "Conceptual — design-only project",
     insights: ["Practiced layout & spacing", "Refined design tokens", "Built reusable components"],
     outcome: "A polished Figma design prototype ready for handoff.",
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "Business Performance Dashboard",
@@ -245,6 +257,8 @@ export const projects: Project[] = [
     dataset: "Conceptual — design-only project",
     insights: ["Iterated on KPI hierarchy", "Refined typography scale", "Improved visual balance"],
     outcome: "A clean Figma dashboard concept ready for development.",
+    liveDemo: "",
+    sourceCode: "",
   },
   {
     title: "SpringAthlete Fitness Gym",
@@ -261,5 +275,7 @@ export const projects: Project[] = [
     dataset: "N/A — static content site",
     insights: ["Practiced responsive design", "Improved CSS structure", "Added lightweight JS interactions"],
     outcome: "A polished SpringAthlete Fitness Gym landing site built fully with HTML, CSS and JavaScript.",
+    liveDemo: "",
+    sourceCode: "",
   },
 ];
