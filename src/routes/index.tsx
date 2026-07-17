@@ -1113,6 +1113,20 @@ function ProjectModal({
                   </p>
                 </div>
               )}
+
+              {/* Action buttons */}
+              <div className="mt-2 flex flex-col gap-3 pt-2 sm:flex-row">
+                <ProjectActionButton
+                  href={project.liveDemo}
+                  icon={ExternalLink}
+                  label="Live Demo"
+                />
+                <ProjectActionButton
+                  href={project.sourceCode}
+                  icon={Github}
+                  label="Source Code"
+                />
+              </div>
             </div>
           </div>
         )}
