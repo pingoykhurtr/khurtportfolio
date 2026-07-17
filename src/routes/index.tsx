@@ -206,6 +206,70 @@ function PortfolioPage() {
   );
 }
 
+const LOADING_MESSAGES = [
+  "Preparing Portfolio...",
+  "Loading Projects...",
+  "Analyzing Data...",
+  "Building Insights...",
+  "Almost Ready...",
+];
+
+function LoadingScreen() {
+  const [message] = useState(() =>
+    LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)]
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
+    >
+      <div className="flex flex-col items-center gap-6 px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="loader-avatar relative"
+        >
+          <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl" />
+          <img
+            src={formalAsset.url}
+            alt="Khurt Pingoy"
+            className="relative z-10 h-28 w-28 rounded-full border-2 border-primary object-cover shadow-2xl"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="space-y-1"
+        >
+          <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground">
+            Khurt Pingoy
+          </h2>
+          <p className="text-sm font-medium text-primary">Aspiring Data Analyst</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="w-64 space-y-3"
+        >
+          <div className="h-0.5 w-full overflow-hidden rounded-full bg-border">
+            <div className="loader-bar h-full rounded-full bg-gradient-to-r from-primary to-primary-glow" />
+          </div>
+          <p className="text-xs tracking-wide text-muted-foreground">{message}</p>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
 function scrollToId(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
