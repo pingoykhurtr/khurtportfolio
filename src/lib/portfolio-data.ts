@@ -275,5 +275,7 @@ export const projects: Project[] = [
     dataset: "N/A — static content site",
     insights: ["Practiced responsive design", "Improved CSS structure", "Added lightweight JS interactions"],
     outcome: "A polished SpringAthlete Fitness Gym landing site built fully with HTML, CSS and JavaScript.",
+    liveDemo: "",
+    sourceCode: "",
   },
 ];
