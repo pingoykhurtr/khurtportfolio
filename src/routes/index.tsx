@@ -29,6 +29,7 @@ import {
   LineChart,
   PieChart,
   TrendingUp,
+  ExternalLink,
 } from "lucide-react";
 import { Toaster, toast } from "sonner";
 
