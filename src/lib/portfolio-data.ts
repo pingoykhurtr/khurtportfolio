@@ -92,6 +92,8 @@ export type Project = {
   learningOutcomes?: string[];
   impact?: string;
   challenges?: string[];
+  liveDemo?: string;
+  sourceCode?: string;
 };
 
 export const projects: Project[] = [
